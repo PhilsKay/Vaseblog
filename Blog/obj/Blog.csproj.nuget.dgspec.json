@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\openSource\\blog\\Blog-project\\Blog\\Blog\\Blog.csproj": {}
+    "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\Blog.csproj": {}
   },
   "projects": {
-    "C:\\openSource\\blog\\Blog-project\\Blog\\Blog\\Blog.csproj": {
+    "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\Blog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\openSource\\blog\\Blog-project\\Blog\\Blog\\Blog.csproj",
+        "projectUniqueName": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\Blog.csproj",
         "projectName": "Blog",
-        "projectPath": "C:\\openSource\\blog\\Blog-project\\Blog\\Blog\\Blog.csproj",
+        "projectPath": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\Blog.csproj",
         "packagesPath": "C:\\Users\\danikay tech\\.nuget\\packages\\",
-        "outputPath": "C:\\openSource\\blog\\Blog-project\\Blog\\Blog\\obj\\",
+        "outputPath": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\danikay tech\\AppData\\Roaming\\NuGet\\NuGet.Config",

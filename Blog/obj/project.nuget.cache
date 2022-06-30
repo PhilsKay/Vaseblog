@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gqeXB4w0mPCRpw0J5JvZfeveWPwkPg+6F5/bhSBuadFP4E7gevyU7D+MbF+nLXWNat5k7baR9kdz8u70w/PE6A==",
+  "dgSpecHash": "qub9/uGASO6W86d7dl8g84ukQlrp434hH2AfpseK172Q8PrX58R06gqMncU/A5JpC5FZaVEDPzZam5ovW9TNUQ==",
   "success": true,
-  "projectFilePath": "C:\\openSource\\blog\\Blog-project\\Blog\\Blog\\Blog.csproj",
+  "projectFilePath": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\Blog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\danikay tech\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\danikay tech\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
