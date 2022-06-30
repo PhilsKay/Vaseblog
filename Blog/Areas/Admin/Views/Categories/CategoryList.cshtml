@@ -4,32 +4,33 @@
     ViewData["Title"] = "CategoryList";
 }
 
-<h1 class="mt-4">>Category List</h1>
+<h1 class="mt-4">>Category Details</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Category List</li>
+    <li class="breadcrumb-item active">Category Details</li>
 </ol>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Categoried
+        Categories
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
             <thead>
                 <tr>
                     <th>
+                        Id
+                    </th>
+                    <th>
                         Name
                     </th>
-                    <th></th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th></th>
-                    <th></th>
+                    <th>Action</th>
                 </tr>
             </tfoot>
             <tbody>
@@ -42,10 +43,10 @@
                             <td asp-for="@item.CategoryName"></td>
                             <td>
                                 <a class="btn btn-secondary">Edit</a>
+                                 <a class="btn btn-danger">Delete</a>
                             </td>
-                            <td>
-                                <a class="btn btn-danger">Delete</a>
-                            </td>
+                            
+                               
                         </tr>
                     }
                 }

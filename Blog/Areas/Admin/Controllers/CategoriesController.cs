@@ -16,5 +16,10 @@ namespace Blog.Areas.Admin.Controllers
             var obj = await _contect.Category.ToListAsync();
             return View(obj);
         }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
     }
 }

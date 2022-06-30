@@ -1,0 +1,30 @@
+﻿@using Blog.Models
+@model Category
+
+@{
+    ViewData["Title"] = "Add Category";
+}
+
+<h1 class="mt-4">>Add Category</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Category List</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Categoried
+    </div>
+    <div class="card-body">
+       <form asp-action="Add" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div>
+                    <label></label>
+                </div>
+            </div>
+       </form>
+    </div>
+</div>
+
+
+
