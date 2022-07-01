@@ -4,7 +4,7 @@
     ViewData["Title"] = "CategoryList";
 }
 
-<h1 class="mt-4">>Category Details</h1>
+<h1 class="mt-4">Category Details</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Category Details</li>
 </ol>
@@ -28,7 +28,9 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th>Id</th>
+                    <th>
+                        Id
+                    </th>
                     <th>Name</th>
                     <th>Action</th>
                 </tr>
@@ -39,11 +41,23 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td asp-for="@item.CategoryId"></td>
-                            <td asp-for="@item.CategoryName"></td>
                             <td>
-                                <a class="btn btn-secondary">Edit</a>
-                                 <a class="btn btn-danger">Delete</a>
+                                @Html.DisplayFor(modelItem => item.CategoryId)
+                               
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryName)
+                            </td>
+                            <td>
+                                <a asp-route-Id="@item.CategoryId" class="btn btn-secondary"
+                                asp-action="Edit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                 <a asp-route-Id="@item.CategoryId" class="btn btn-danger"
+                                 onclick="confirm('Are you sure want to delete?')"
+                                 asp-action="Delete">
+                                     <i class="fa-solid fa-trash-can"></i>
+                                 </a>
                             </td>
                             
                                
@@ -52,13 +66,19 @@
                 }
                 else
                 {
-                    <tr>
-                        <td class="text-danger">No Category to show</td>
+                    <tr class="text-danger">
+                         No Category to show
                     </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
+
+  <script>
+        if (@TempData["DeleteCategory"] != "") {
+             alertify.success(@Html.Raw(TempData["DeleteCategory"]));
+        }
+    </script>
 
 
