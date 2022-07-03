@@ -25,11 +25,17 @@ namespace Blog.Models
 
         [Required]
         [Display(Name = "ImageUrl")]
+        [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
 
         [Required]
         [Display(Name = "Content")]
         [MaxLength(int.MaxValue)]
         public string Content { get; set; }
+
+        [Required]
+        [Display(Name = "DateTime Created")]
+        [DataType(DataType.DateTime)]
+        public DateTime DateCreated { get; set; }
     }
 }
