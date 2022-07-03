@@ -2,7 +2,7 @@
 @model Category
 
 @{
-    ViewData["Title"] = "Add Category";
+    ViewData["Title"] = "Edit Category";
 }
 
 <h1 class="mt-4">>Add Category</h1>
@@ -15,8 +15,9 @@
         Categories
     </div>
     <div class="card-body">
-       <form asp-action="Add" method="post">
+       <form asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="CategoryId" type="hidden"/>
             <div class="form-group row">
                 <div>
                     <label asp-for="CategoryName">
@@ -28,7 +29,7 @@
                 </div>
             </div>
             <div>
-                <input type="submit" class="btn btn-primary" value="Save" />
+                <input type="submit" class="btn btn-info" value="Edit" />
                 <input type="submit" class="btn btn-primary" value="View Details" asp-action="CategoryList" />
             </div>
            
@@ -40,3 +41,5 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+

@@ -39,9 +39,11 @@ namespace Blog.Areas.Admin.Controllers
                 TempData["AddCategory"] = "Category saved Successfully";
                 return View();
             }
-            ModelState.AddModelError(obj.CategoryName,"Must be in correct format");
+            ModelState.AddModelError(string.Empty,"Use correct format");
             return View(obj);   
         }
+
+
 
         [ActionName("Delete")]
         public async Task<IActionResult> Delete(int? id)
@@ -62,5 +64,36 @@ namespace Blog.Areas.Admin.Controllers
             }
             return NotFound();
         }
+
+        //===== Go to Edit View //
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        //=====  Edit the category //
+        [ActionName("Edit")]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id != null)
+            {
+                if (ModelState.IsValid)
+                {
+                    var category = await _contect.Category.FindAsync(id);
+                    if (category != null)
+                    {
+                        _contect.Category.Update(category);
+                        _contect.SaveChanges();
+                        TempData["EditCategory"] = "Category edited Successfully";
+                        return RedirectToAction("CategoryList");
+                    }
+                    TempData["DeleteCategory"] = "Category cannot be Edited";
+                    return RedirectToAction("CategoryList");
+                }
+                ModelState.AddModelError(string.Empty, "Invalid format");
+            }
+            return NotFound();
+        }
+
     }
 }
