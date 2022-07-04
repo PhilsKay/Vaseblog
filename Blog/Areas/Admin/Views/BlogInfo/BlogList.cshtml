@@ -1,0 +1,125 @@
+﻿@using Blog.Models
+@model List<BlogData>
+
+@{
+    ViewData["Title"] = "Blog List";
+}
+
+<h1 class="mt-4">Blog Details</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Category Details</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Categories
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>
+                        Blog Id
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                     <th>
+                        Tags
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                     <th>
+                        Date time
+                    </th>
+                    <th>
+                        Content
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                     <th>
+                        Blog Id
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                     <th>
+                        Tags
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                     <th>
+                        Date time
+                    </th>
+                    <th>
+                        Content
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BlogId)
+                               
+                            </td>
+                            <td>
+                                <img src="~/images/@item.ImageUrl" height="150" width="150">
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                               
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tags)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BlogCategory)
+                               
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Content)
+                               
+                            </td>
+                            <td>
+                                <a asp-route-Id="@item.BlogId" class="btn btn-secondary"
+                                asp-action="Edit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                 <a asp-route-Id="@item.BlogId" class="btn btn-danger"
+                                 onclick="confirm('Are you sure want to delete?')"
+                                 asp-action="Delete">
+                                     <i class="fa-solid fa-trash-can"></i>
+                                 </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="text-danger">
+                         No Blog to show
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

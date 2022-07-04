@@ -37,6 +37,9 @@ namespace Blog.Migrations
                         .HasMaxLength(2147483647)
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("text");

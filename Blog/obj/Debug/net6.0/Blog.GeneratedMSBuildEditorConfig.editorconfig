@@ -15,6 +15,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\openSource\Vaseblog\Blog\Vaseblog\Blog
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/openSource/Vaseblog/Blog/Vaseblog/Blog/Areas/Admin/Views/BlogInfo/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmxvZ0luZm9cQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/openSource/Vaseblog/Blog/Vaseblog/Blog/Areas/Admin/Views/BlogInfo/BlogList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmxvZ0luZm9cQmxvZ0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/openSource/Vaseblog/Blog/Vaseblog/Blog/Areas/Admin/Views/Categories/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
