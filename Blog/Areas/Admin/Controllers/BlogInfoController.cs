@@ -25,7 +25,7 @@ namespace Blog.Areas.Admin.Controllers
 
         public IActionResult Add()
         {
-            ViewData["Categoty"] = new SelectList(_contect.Category.ToList(), "CategoryId", "CategoryName");
+            ViewBag.Category = new SelectList(_contect.Category.ToList(), "CategoryId", "CategoryName");
             return View();
         }
 
