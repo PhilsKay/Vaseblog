@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MrY/4Fyi6yTpI3dxLsQhIlRNX+ROrvVq4H1knsqvzig=",
+  "Hash": "HksB+Vacp+/yHmTctgrwFRn2z+/MjBorOv7DnuxuoXI=",
   "Source": "Blog",
   "BasePath": "_content/Blog",
   "Mode": "Default",
@@ -2565,6 +2565,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\frolacss\\third_party\\spell_checker.min.css"
+    },
+    {
+      "Identity": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\wwwroot\\images\\IMG-20220501-WA0005.jpg",
+      "SourceId": "Blog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\wwwroot\\",
+      "BasePath": "_content/Blog",
+      "RelativePath": "images/IMG-20220501-WA0005.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\IMG-20220501-WA0005.jpg"
+    },
+    {
+      "Identity": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\wwwroot\\images\\remember who you are.jpg",
+      "SourceId": "Blog",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\wwwroot\\",
+      "BasePath": "_content/Blog",
+      "RelativePath": "images/remember who you are.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\remember who you are.jpg"
     },
     {
       "Identity": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\wwwroot\\js\\froala_editor.min.js",

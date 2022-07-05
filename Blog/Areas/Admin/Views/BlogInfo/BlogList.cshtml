@@ -7,12 +7,12 @@
 
 <h1 class="mt-4">Blog Details</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Category Details</li>
+    <li class="breadcrumb-item active">Blog Details</li>
 </ol>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Categories
+        Blogs
     </div>
     <div class="card-body">
         <table id="datatablesSimple">
@@ -79,25 +79,27 @@
                                
                             </td>
                             <td>
-                                <img src="~/images/@item.ImageUrl" height="150" width="150">
+                                <img src="~/@item.ImageUrl" height="100" width="100">
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Title)
                                
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Tags)
+                                @foreach(var tgs in item.Tags){
+                                @Html.DisplayFor(modelItem => tgs)
+
+                                }
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.BlogCategory)
+                                @Html.DisplayFor(modelItem => item.CategoryName.CategoryName)
                                
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.DateCreated)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Content)
-                               
+                               @Html.Raw(item.Content.Remove(25))
                             </td>
                             <td>
                                 <a asp-route-Id="@item.BlogId" class="btn btn-secondary"

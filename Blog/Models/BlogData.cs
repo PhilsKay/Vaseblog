@@ -13,17 +13,15 @@ namespace Blog.Models
         public string Title { get; set; }
 
         [Required]
-        [StringLength(20, ErrorMessage = "Should not be more than 20 characters")]
         [Display(Name = "Tags")]
         public List<string> Tags { get; set; }
 
         [Required]
+        [Display(Name = "Category")]
+        public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
-        [Display(Name ="Category")]
-        [Column("Category Name")]
-        public virtual Category BlogCategory { get; set; }
+        public Category CategoryName { get; set; }
 
-        [Required]
         [Display(Name = "ImageUrl")]
         [DataType(DataType.ImageUrl)]
         public string ImageUrl { get; set; }
@@ -33,9 +31,8 @@ namespace Blog.Models
         [MaxLength(int.MaxValue)]
         public string Content { get; set; }
 
-        [Required]
         [Display(Name = "DateTime Created")]
-        [DataType(DataType.DateTime)]
         public DateTime DateCreated { get; set; }
     }
+
 }

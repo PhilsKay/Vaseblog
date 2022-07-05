@@ -19,7 +19,7 @@ namespace Blog.Areas.Admin.Controllers
 
         public async Task<IActionResult> BlogList()
         {
-            var obj = await _contect.BlogData.Include(c =>c.BlogCategory).ToListAsync();
+            var obj = await _contect.BlogData.Include(c =>c.CategoryName).ToListAsync();
             return View(obj);
         }
 
@@ -37,8 +37,8 @@ namespace Blog.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 obj.BlogId = Guid.NewGuid();
-                obj.DateCreated = DateTime.Now;
-                if(image != null)
+                obj.DateCreated = DateTime.UtcNow;
+                if (image != null)
                 {
                     //Getting the Image upload from server converuing to a url
                     var name = Path.Combine(_env.WebRootPath + "/images",Path.GetFileName(image.FileName));
@@ -58,9 +58,9 @@ namespace Blog.Areas.Admin.Controllers
 
 
         [ActionName("Delete")]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            if (id != null)
+            if (id != Guid.Empty)
             {
                 var checkBlog = await _contect.BlogData.FindAsync(id);
                 if (checkBlog != null)
@@ -78,9 +78,9 @@ namespace Blog.Areas.Admin.Controllers
         }
 
         //===== Go to Edit View //
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid id)
         {
-            if (id == null)
+            if (id == Guid.Empty)
             {
                 return NotFound();
 
@@ -99,14 +99,22 @@ namespace Blog.Areas.Admin.Controllers
         [ActionName("Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditBlog(BlogData obj)
+        public async Task<IActionResult> EditBlog(BlogData obj, IFormFile image)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    //Getting the Image upload from server converuing to a url
+                    var name = Path.Combine(_env.WebRootPath + "/images", Path.GetFileName(image.FileName));
+                    await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                    obj.ImageUrl = "images/" + image.FileName;
+
+                }
                 _contect.BlogData.Update(obj);
                 await _contect.SaveChangesAsync();
-                TempData["EditBlog"] = "Category edited successfully";
-                return RedirectToAction("CategoryList");
+                TempData["EditBlog"] = "Blog edited successfully";
+                return RedirectToAction("BlogList");
             }
             ModelState.AddModelError(string.Empty, "Invalid format");
             return View(obj);

@@ -23,6 +23,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmxvZ0luZm9cQmxvZ0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/openSource/Vaseblog/Blog/Vaseblog/Blog/Areas/Admin/Views/BlogInfo/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQmxvZ0luZm9cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/openSource/Vaseblog/Blog/Vaseblog/Blog/Areas/Admin/Views/Categories/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcmllc1xBZGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
