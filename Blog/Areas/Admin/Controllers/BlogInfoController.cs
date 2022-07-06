@@ -111,6 +111,8 @@ namespace Blog.Areas.Admin.Controllers
                     obj.ImageUrl = "images/" + image.FileName;
 
                 }
+                var date = obj.DateCreated.ToUniversalTime();
+                obj.DateCreated = date;
                 _contect.BlogData.Update(obj);
                 await _contect.SaveChangesAsync();
                 TempData["EditBlog"] = "Blog edited successfully";

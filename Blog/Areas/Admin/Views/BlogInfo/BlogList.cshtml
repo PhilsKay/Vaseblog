@@ -99,8 +99,9 @@
                                 @Html.DisplayFor(modelItem => item.DateCreated)
                             </td>
                             <td>
-                               @Html.Raw(item.Content.Remove(25))
+                                @item.Content.Remove(25)
                             </td>
+
                             <td>
                                 <a asp-route-Id="@item.BlogId" class="btn btn-secondary"
                                 asp-action="Edit">

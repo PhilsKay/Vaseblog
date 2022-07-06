@@ -21,7 +21,6 @@
     <div class="card-body">
        <form asp-action="Edit" method="post" enctype="multipart/form-data">
            <input type="hidden" asp-for="BlogId"/>
-           <input type="hidden" asp-for="DateCreated"/>
            <input type="hidden" asp-for="ImageUrl"/>
            <input type="hidden" asp-for="Tags"/>
 
@@ -51,9 +50,10 @@
                 <div>
                     <label class="control-label">
                         Image
+                        <br />
+                <p>Note: Change image if your require.</p>
                     </label>
                 </div>
-                <p>Note: Change image if your require.</p>
                <input type="file"  name="image"/>
 
                <!-- <div class="custom-file">
@@ -66,6 +66,12 @@
 
                 <img id="blogImage" src="" alt="Blog image" width="150" height="150"
                     style="border: 1px; margin-top: 20px; margin-left: 120px"/>-->
+            </div>
+
+            <div class="form-group">
+                <label>Date Created</label>
+                <input readonly asp-for="DateCreated"/>
+
             </div>
 
             <div class="form-group">
