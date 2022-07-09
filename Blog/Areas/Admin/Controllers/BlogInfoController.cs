@@ -99,7 +99,7 @@ namespace Blog.Areas.Admin.Controllers
         [ActionName("Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditBlog(BlogData obj, IFormFile image)
+        public async Task<IActionResult> EditBlog(BlogData obj, IFormFile image, List<string> existingTags)
         {
             if (ModelState.IsValid)
             {
@@ -111,6 +111,9 @@ namespace Blog.Areas.Admin.Controllers
                     obj.ImageUrl = "images/" + image.FileName;
 
                 }
+               
+                obj.Tags.AddRange(existingTags);
+
                 var date = obj.DateCreated.ToUniversalTime();
                 obj.DateCreated = date;
                 _contect.BlogData.Update(obj);

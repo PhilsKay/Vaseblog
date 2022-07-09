@@ -1,5 +1,9 @@
-﻿<div class="blog-filter">
+﻿@using Blog.Models;
+@model List<Category>
+<div class="blog-filter">
     <span class="filter-item active-filter" data-filter='all'>All</span>
-    <span class="filter-item" data-filter='tech'>Tech</span>
-    <span class="filter-item" data-filter='productivity'>Productivity</span>
+    @foreach(var item in Model)
+    {
+    <span class="filter-item" data-filter='@item.CategoryName'>@item.CategoryName</span>
+    }
 </div>
