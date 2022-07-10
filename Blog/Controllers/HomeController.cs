@@ -20,7 +20,7 @@ namespace Blog.Controllers
 
         public async Task<IActionResult> Index(int? page)
         {
-            var blogs = await _context.BlogData.Include(m => m.CategoryName).ToListAsync();
+            var blogs = await _context.BlogData.Include(m => m.CategoryName).OrderByDescending(c => c.DateCreated).ToListAsync();
             return View(blogs.ToPagedList(page??1,9));
         }
 

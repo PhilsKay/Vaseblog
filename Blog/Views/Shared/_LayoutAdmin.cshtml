@@ -119,19 +119,17 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     @section Scripts {
-        <script>
-            function() {
+        <script type="text/javascript">
+            
                 if (@TempData["AddCategory"] != '') {
                     alertify.success('added successfully');
                 }
-                if (@TempData["DeleteCategory"] != null) {
+                if (@TempData["DeleteCategory"] != '') {
                     alertify.error(@TempData["DeleteCategory"]);
                 }
-                if (@TempData["EditCategory"] != null) {
+                if (@TempData["EditCategory"] != '') {
                     alertify.success(@TempData["EditCategory"]);
                 }
-
-            }
         </script>
     }
 

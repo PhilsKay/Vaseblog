@@ -1115,6 +1115,7 @@ a {
 */
 .blog-filter{
     display:flex;
+    flex-wrap: wrap;
     justify-content:center;
     align-items:center;
     column-gap: 1.5rem;
@@ -1135,11 +1136,23 @@ a {
 /* ==== Filter and search in home page*/
 .filter-search{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 .search-top {
     margin-top: 2rem !important;
+}
+
+@media screen and (max-width: 1200px){
+    .search-top {
+        margin: 2rem auto auto auto;
+    }
+
+    .filter-search {
+       margin: auto
+    }
+
 }
 /*--------------------------------------------------------------
 # Footer
