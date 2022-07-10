@@ -514,3 +514,6 @@ C:\openSource\Vaseblog\Blog\Vaseblog\Blog\obj\Debug\net6.0\refint\Blog.dll
 C:\openSource\Vaseblog\Blog\Vaseblog\Blog\obj\Debug\net6.0\Blog.pdb
 C:\openSource\Vaseblog\Blog\Vaseblog\Blog\obj\Debug\net6.0\Blog.genruntimeconfig.cache
 C:\openSource\Vaseblog\Blog\Vaseblog\Blog\obj\Debug\net6.0\ref\Blog.dll
+C:\openSource\Vaseblog\Blog\Vaseblog\Blog\bin\Debug\net6.0\JetBrains.Annotations.dll
+C:\openSource\Vaseblog\Blog\Vaseblog\Blog\bin\Debug\net6.0\X.PagedList.dll
+C:\openSource\Vaseblog\Blog\Vaseblog\Blog\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll

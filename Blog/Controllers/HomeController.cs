@@ -3,6 +3,7 @@ using Blog.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using X.PagedList;
 
 namespace Blog.Controllers
 {
@@ -17,10 +18,10 @@ namespace Blog.Controllers
             _context = context; 
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
             var blogs = await _context.BlogData.Include(m => m.CategoryName).ToListAsync();
-            return View(blogs);
+            return View(blogs.ToPagedList(page??1,9));
         }
 
         public async Task<IActionResult> BlogFilter()

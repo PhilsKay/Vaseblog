@@ -37,10 +37,10 @@ namespace Blog.Areas.Admin.Controllers
                 await _contect.Category.AddAsync(obj);
                 await _contect.SaveChangesAsync();
                 TempData["AddCategory"] = "Category saved Successfully";
-                return View();
+                return RedirectToAction("CategoryList");
             }
             ModelState.AddModelError(string.Empty, "Use correct format");
-            return View(obj);
+            return View("Add",obj);
         }
 
 
