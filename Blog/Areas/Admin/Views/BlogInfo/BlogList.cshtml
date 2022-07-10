@@ -63,7 +63,7 @@
                         Date time
                     </th>
                     <th>
-                        Content
+                        Summary
                     </th>
                     <th>Action</th>
                 </tr>
@@ -99,7 +99,8 @@
                                 @Html.DisplayFor(modelItem => item.DateCreated)
                             </td>
                             <td>
-                                @item.Content.Remove(25)
+                                @Html.DisplayFor(modelItem => item.Summary)
+                                
                             </td>
 
                             <td>

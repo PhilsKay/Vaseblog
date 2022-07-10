@@ -49,7 +49,7 @@ namespace Blog.Areas.Admin.Controllers
                 await _contect.BlogData.AddAsync(obj);
                 await _contect.SaveChangesAsync();
                 TempData["AddBlog"] = "Blog saved Successfully";
-                return View();
+                return RedirectToAction("BlogList");
             }
             ModelState.AddModelError(string.Empty, "Use correct format");
             return View(obj);
@@ -101,7 +101,7 @@ namespace Blog.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditBlog(BlogData obj, IFormFile image, List<string> existingTags)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid || obj.Tags == null)
             {
                 if (image != null)
                 {
@@ -111,8 +111,18 @@ namespace Blog.Areas.Admin.Controllers
                     obj.ImageUrl = "images/" + image.FileName;
 
                 }
-               
-                obj.Tags.AddRange(existingTags);
+                //============
+                // Check if tags variable are not empty
+                //                            ==============================
+               if(obj.Tags == null)
+                {
+                    obj.Tags = existingTags;
+                }
+                else
+                {
+                    obj.Tags.AddRange(existingTags);
+
+                }
 
                 var date = obj.DateCreated.ToUniversalTime();
                 obj.DateCreated = date;
@@ -122,7 +132,7 @@ namespace Blog.Areas.Admin.Controllers
                 return RedirectToAction("BlogList");
             }
             ModelState.AddModelError(string.Empty, "Invalid format");
-            return View(obj);
+            return View("Edit",obj);
         }
     }
 

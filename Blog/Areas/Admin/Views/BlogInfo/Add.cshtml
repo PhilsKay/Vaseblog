@@ -19,7 +19,7 @@
         Blogs
     </div>
     <div class="card-body">
-       <form asp-action="Add" method="post" enctype="multipart/form-data">
+        <form asp-action="Add" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group row">
                 <div>
@@ -27,19 +27,19 @@
                     </label>
                 </div>
                 <div>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
             <br />
             <div class="form-group row">
                 <div class="col-4">
-                 <button onclick="addTags()" type="button">Add Tags</button>
-            <table id="AddTagsTable">
-                <tr>
-                    <th>@Html.DisplayNameFor(model=>model.Tags)</th>
-                </tr>
-            </table>
+                    <button onclick="addTags()" type="button">Add Tags</button>
+                    <table id="AddTagsTable">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model=>model.Tags)</th>
+                        </tr>
+                    </table>
                 </div>
             </div>
             <div class="form-group row">
@@ -48,8 +48,8 @@
                     </label>
                 </div>
                 <div>
-                  <select asp-for="CategoryId" asp-items="@ViewBag.Category"  class="form-control col-4"></select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    <select asp-for="CategoryId" asp-items="@ViewBag.Category" class="form-control col-4"></select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row">
@@ -57,17 +57,17 @@
                     <label asp-for="ImageUrl" class="control-label">
                     </label>
                 </div>
-                <input type="file" name="image"/>
-               <!-- <div class="custom-file">
-                <input asp-for="ImageUrl" type="image" class="file" 
-                id="blogImage"
-                onchange="document.getElementById('blogImage').src = window.URL.createObjectURL(this.files[0])"/>
-                <label class="cusstom-file-label" for="imageUrl">Choose Image</label>
-                </div>
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                <input type="file" name="image" />
+                <!-- <div class="custom-file">
+                 <input asp-for="ImageUrl" type="image" class="file"
+                 id="blogImage"
+                 onchange="document.getElementById('blogImage').src = window.URL.createObjectURL(this.files[0])"/>
+                 <label class="cusstom-file-label" for="imageUrl">Choose Image</label>
+                 </div>
+                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
 
-                <img id="blogImage" src="" alt="Blog image" width="150" height="150"
-                    style="border: 1px; margin-top: 20px; margin-left: 120px"/>-->
+                 <img id="blogImage" src="" alt="Blog image" width="150" height="150"
+                     style="border: 1px; margin-top: 20px; margin-left: 120px"/>-->
             </div>
 
             <div class="form-group">
@@ -78,19 +78,30 @@
                 <div>
                     <textarea asp-for="Content" class="form-control" id="contentEditor">
                     </textarea>
-                     <script>
-                            var editor = new FroalaEditor('#contentEditor');
-                     </script>
-                <span asp-validation-for="Content" class="text-danger"></span>
+                    <script>
+                        var editor = new FroalaEditor('#contentEditor');
+                    </script>
+                    <span asp-validation-for="Content" class="text-danger"></span>
                 </div>
             </div>
-           
+            <div class="form-group row">
+                <div>
+                    <label asp-for="Summary" class="control-label">
+                    </label>
+                </div>
+                <div>
+                    <textarea asp-for="Summary" class="form-control" cols="200" rows="200">
+                    </textarea>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+
             <br />
             <div>
                 <input type="submit" class="btn btn-primary" value="Publish" />
                 <input type="submit" class="btn btn-secondary" value="View Details" asp-action="BlogList" />
             </div>
-       </form>
+        </form>
     </div>
 </div>
 
@@ -98,21 +109,21 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-  <!--  <script type="text/javascript">
-        $(".file").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
-    </script>
-    -->
+    <!--  <script type="text/javascript">
+          $(".file").on("change", function() {
+              var fileName = $(this).val().split("\\").pop();
+              $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+          });
+      </script>
+      -->
 
-     <script>
+    <script>
         var counter = 0;
         function addTags() {
             var table = document.getElementById("AddTagsTable");
             var row = table.insertRow(-1);
             var cell1 = row.insertCell(0);
-            cell1.innerHTML = '<input type="text" name="Tags[' + counter+']"/>';
+            cell1.innerHTML = '<input type="text" name="Tags[' + counter + ']"/>';
             counter++;
         }
     </script>

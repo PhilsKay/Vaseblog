@@ -1,235 +1,96 @@
-﻿@{
+﻿@using Blog.Models;
+@model List<BlogData>
+@{
     ViewData["Title"] = "Blog lists";
 }
 
 <div class="hero hero-single route bg-image" style="background-image: url(assets/img/banner.jpg)">
     <div class="overlay-mf"></div>
     <div class="hero-content display-table">
-      <div class="table-cell">
-        <div class="container">
-          <h2 class="hero-title mb-4">Latest Blogs</h2>
-          <ol class="breadcrumb d-flex justify-content-center">
-            <li class="breadcrumb-item active">
-              <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-            </li>
-          </ol>
+        <div class="table-cell">
+            <div class="container">
+                <h2 class="hero-title mb-4">Latest Blogs</h2>
+                <ol class="breadcrumb d-flex justify-content-center">
+                    <li class="breadcrumb-item active">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                </ol>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <div class="filter-search container">
-       <!-- ===== Blog Filter-->
-  <partial name="_BlogFilterPartial"/>
-  <div class="sidebar-search search-top">
-  <div class="sidebar-content">
-                <form>
-                  <div class="input-group">
+<div class="filter-search container">
+    <!-- ===== Blog Filter-->
+    <div id="filterZone">
+        <!--=====
+            render the blog filter partial view with jquerry
+            ==============
+        -->
+    </div>
+    <div class="sidebar-search search-top">
+        <div class="sidebar-content">
+            <form>
+                <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
                     <span class="input-group-btn">
-                      <button class="btn btn-secondary btn-search" type="button">
-                        <span class="bi bi-search"></span>
-                      </button>
+                        <button class="btn btn-secondary btn-search" type="button">
+                            <span class="bi bi-search"></span>
+                        </button>
                     </span>
-                  </div>
-                </form>
-              </div>
-  </div>
-  </div>
-
-   <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog-mf sect-pt4 route">
-      <div class="container">
-       
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a asp-area="" asp-controller="BlogContent" asp-action="data"><img src="assets/img/post-1.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Travel</h6>
-                  </div>
                 </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> 10 min
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a href="blog-single.html"><img src="assets/img/post-2.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Web Design</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> 10 min
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a href="blog-single.html"><img src="assets/img/post-3.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Web Design</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> 10 min
-                </div>
-              </div>
-            </div>
-          </div>
-           <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a href="blog-single.html"><img src="assets/img/post-3.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Web Design</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> 10 min
-                </div>
-              </div>
-            </div>
-          </div>
-           <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a href="blog-single.html"><img src="assets/img/post-3.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Web Design</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> 10 min
-                </div>
-              </div>
-            </div>
-          </div>
-           <div class="col-md-4">
-            <div class="card card-blog">
-              <div class="card-img">
-                <a href="blog-single.html"><img src="assets/img/post-3.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Web Design</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html">See more ideas about Travel</a></h3>
-                <p class="card-description">
-                  Proin eget tortor risus. Pellentesque in ipsum id orci porta dapibus. Praesent sapien massa, convallis
-                  a pellentesque nec,
-                  egestas non nisi.
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Morgan Freeman</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> 10 min
-                </div>
-              </div>
-            </div>
-          </div>
+            </form>
         </div>
-      </div>
-    </section><!-- End Blog Section -->
- 
+    </div>
+</div>
+
+<!-- ======= Blog Section ======= -->
+<section id="blog" class="blog-mf sect-pt4 route">
+    <div class="container">
+
+        <div class="row">
+            <!--=============
+                Get all the Blog data in the database and display to view
+                                                               =======================
+            -->
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card card-blog">
+                        <div class="card-img">
+                            <a asp-area="" asp-controller="BlogContent" asp-action="data"><img src="@item.ImageUrl" alt="" class="img-fluid"></a>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-category-box">
+                                <div class="card-category">
+                                    <h6 class="category">@item.CategoryName.CategoryName</h6>
+                                </div>
+                            </div>
+                            <h3 class="card-title"><a asp-area="" asp-controller="BlogContent" asp-action="data">@item.Title</a></h3>
+                            <p class="card-description">
+                                @item.Summary.Substring(1,20)
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="post-author">
+                                <a href="#">
+                                    <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">`1
+                                    <span class="author">Philskay</span>
+                                </a>
+                            </div>
+                            <div class="post-date">
+                                <span class="bi bi-clock"></span> @item.DateCreated.ToLocalTime()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section><!-- End Blog Section -->
+@section Scripts{
+    <script>
+        $('#filterZone').load("/Home/BlogFilter")
+    </script>
+ }
 

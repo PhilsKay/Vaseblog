@@ -13,6 +13,11 @@ namespace Blog.Models
         public string Title { get; set; }
 
         [Required]
+        [Display(Name = "Summary")]
+        [StringLength(100, ErrorMessage ="Should not exceed 100 characters.")]
+        public string Summary { get; set; }
+
+        [Required]
         [Display(Name = "Tags")]
         public List<string> Tags { get; set; }
 
