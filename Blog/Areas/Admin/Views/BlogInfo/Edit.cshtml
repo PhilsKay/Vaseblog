@@ -62,7 +62,8 @@
                     </label>
                 </div>
                 <div>
-                    <input asp-for="CategoryId" readonly />
+                    <select asp-for="CategoryId" asp-items="@ViewBag.Category">
+                        </select>
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </div>
             </div>

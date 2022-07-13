@@ -221,7 +221,7 @@
 </div>
 
 <!-- ======= Blog Section ======= -->
-<section id="blog" class="blog-mf sect-pt4 route">
+<section id="blog" class="blog-mf sect-pt4 route" aria-labelledby="vaseblog">
     <div class="container">
 
         <div class="row">
@@ -232,7 +232,7 @@
             @foreach (var item in Model)
             {
                 <div class="col-md-4">
-                    <section aria-labelledby="the-title">
+                    <section aria-labelledby="the-title" id="vaseblog">
                         <div class="card card-blog">
                         <div class="card-img">
                             <a asp-area="" asp-controller="BlogContent" asp-action="data"><img src="@item.ImageUrl" alt="" class="img-fluid"></a>
@@ -251,7 +251,7 @@
                         <div class="card-footer">
                             <div class="post-author">
                                 <a href="#">
-                                    <img src="assets/img/testimonial-2.jpg" alt="" class="avatar rounded-circle">`1
+                                    <span class="bi bi-person"></span>
                                     <span class="author">Philskay</span>
                                 </a>
                             </div>

@@ -89,6 +89,7 @@ namespace Blog.Areas.Admin.Controllers
             //var category = await _contect.Category.Where(c => c.CategoryId == id).FirstOrDefaultAsync();
             if (checkBlog != null)
             {
+                ViewBag.Category = new SelectList(_contect.Category.ToList(), "CategoryId", "CategoryName");
                 return View(checkBlog);
             }
             return NotFound();
@@ -101,7 +102,16 @@ namespace Blog.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditBlog(BlogData obj, IFormFile image, List<string> existingTags)
         {
-            if (ModelState.IsValid || obj.Tags == null)
+            //============
+            // Check if new tags  are not added
+            //                            ==============================
+
+            if (obj.Tags == null)
+            {
+                obj.Tags = new List<string>();
+            }
+
+            if (ModelState.IsValid)
             {
                 if (image != null)
                 {
@@ -111,19 +121,8 @@ namespace Blog.Areas.Admin.Controllers
                     obj.ImageUrl = "images/" + image.FileName;
 
                 }
-                //============
-                // Check if tags variable are not empty
-                //                            ==============================
-               if(obj.Tags == null)
-                {
-                    obj.Tags = existingTags;
-                }
-                else
-                {
-                    obj.Tags.AddRange(existingTags);
-
-                }
-
+            
+                obj.Tags.AddRange(existingTags);
                 var date = obj.DateCreated.ToUniversalTime();
                 obj.DateCreated = date;
                 _contect.BlogData.Update(obj);
