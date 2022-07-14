@@ -14,7 +14,7 @@ namespace Blog.Models
 
         [Required]
         [Display(Name = "Summary")]
-        [StringLength(100, ErrorMessage ="Should not exceed 100 characters.")]
+        [StringLength(300, ErrorMessage ="Should not exceed 300 characters and atleast 50 chars.",MinimumLength =50)]
         public string Summary { get; set; }
 
         [Required]
