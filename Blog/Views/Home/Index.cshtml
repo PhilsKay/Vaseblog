@@ -235,7 +235,8 @@
                     <section aria-labelledby="the-title" id="vaseblog">
                         <div class="card card-blog">
                         <div class="card-img">
-                            <a asp-area="" asp-controller="BlogContent" asp-action="data"><img src="@item.ImageUrl" alt="" class="img-fluid"></a>
+                            <a asp-area="" asp-controller="BlogContent" asp-action="data" 
+                            asp-route-Id="@item.BlogId"><img src="@item.ImageUrl" alt="" class="img-fluid"></a>
                         </div>
                         <div class="card-body">
                             <div class="card-category-box">
@@ -243,7 +244,7 @@
                                     <h6 class="category">@item.CategoryName.CategoryName</h6>
                                 </div>
                             </div>
-                            <h3 id="the-title" class="card-title"><a asp-area="" asp-controller="BlogContent" asp-action="data">@item.Title</a></h3>
+                            <h3 id="the-title" class="card-title"><a asp-area="" asp-controller="BlogContent" asp-action="data" asp-route-Id="@item.BlogId">@item.Title</a></h3>
                             <p class="card-description">
                                 @item.Summary.Substring(1,20)
                             </p>
