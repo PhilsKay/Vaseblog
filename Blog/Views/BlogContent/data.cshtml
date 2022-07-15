@@ -180,7 +180,7 @@
                         <div class="sidebar-content">
                             <form asp-controller="Home" asp-action="Index" method="get">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..." name="searchTitle">
+                                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..." name="title">
                                     <span class="input-group-btn">
                                         <button class="btn btn-secondary btn-search" type="submit">
                                             <span class="bi bi-search"></span>
@@ -197,32 +197,19 @@
                     <div class="widget-sidebar">
                         <h5 class="sidebar-title">Recent Post</h5>
                         <div class="sidebar-content" id="latestBlogs">
-                       <!--============
-                           Partial view of latest blogsc called with jquerry
-                                                ==============
-                       -->
+                            <!--============
+                                Partial view of latest blogs called with jquerry
+                                                     ==============
+                            -->
                         </div>
                     </div>
                     <div class="widget-sidebar">
                         <h5 class="sidebar-title">Archives</h5>
-                        <div class="sidebar-content">
-                            <ul class="list-sidebar">
-                                <li>
-                                    <a href="#">September, 2017.</a>
-                                </li>
-                                <li>
-                                    <a href="#">April, 2017.</a>
-                                </li>
-                                <li>
-                                    <a href="#">Nam quo autem exercitationem.</a>
-                                </li>
-                                <li>
-                                    <a href="#">Atque placeat maiores nam quo autem</a>
-                                </li>
-                                <li>
-                                    <a href="#">Nam quo autem exercitationem.</a>
-                                </li>
-                            </ul>
+                        <div class="sidebar-content" id="archiveBlog">
+                            <!--============
+                                Partial view of archive blogs called with jquerry
+                                                     ==============
+                            -->
                         </div>
                     </div>
                     <!--=============
@@ -236,7 +223,9 @@
                                 @foreach (var tags in Model.Tags)
                                 {
                                     <li>
-                                        <a href="#">@tags</a>
+                                        <a asp-area="" asp-controller="Home" asp-action="Index" name="tag" id="tag" >@Html.DisplayFor(m => tags)</a>
+                                        @{
+                                        }
                                     </li>
                                 }
 
@@ -249,9 +238,10 @@
     </section><!-- End Blog Single Section -->
 
 </main><!-- End #main -->
-
 @section Scripts{
     <script>
-    $('#latestBlogs').load("/BlogContent/LatestBlog")
+        //Display the partial views
+        $('#latestBlogs').load("/BlogContent/LatestBlog")
+        $('#archiveBlog').load("/BlogContent/ArchiveBlog")
     </script>
 }

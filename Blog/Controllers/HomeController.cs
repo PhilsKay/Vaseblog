@@ -18,13 +18,28 @@ namespace Blog.Controllers
             _context = context; 
         }
 
-        public async Task<IActionResult> Index(int? page, string searchTitle)
+        public async Task<IActionResult> Index(int? page, string title, string tag)
         {
-            if(searchTitle != null)
+            tag = ViewBag.tag;
+            //Check if the action is not from the search function
+            if (title != null)
             {
                 var search = await _context.BlogData.Include(m => m.CategoryName)
-                    .Where(s => s.Title.Contains(searchTitle)).OrderByDescending(c => c.DateCreated).ToListAsync();
-                ViewBag.SearchTitle = $"Search result for : {searchTitle}";
+                    .Where(s => s.Title.Contains(title)).OrderByDescending(c => c.DateCreated).ToListAsync();
+                ViewBag.Search = $"Search result for : {title}";
+                foreach (var data in search)
+                {
+                    ViewBag.DateInAgoFormat = date(data.DateCreated.ToLocalTime().Ticks);//calling the date method and adding to the viewbag
+                }
+
+                return View(search.ToPagedList(page ?? 1, 9));
+            }
+            //Check if the action is not from the Tags function
+            if (tag != null)
+            {
+                var search = await _context.BlogData.Include(m => m.CategoryName)
+                    .Where(s => s.Tags.Contains(tag)).OrderByDescending(c => c.DateCreated).ToListAsync();
+                ViewBag.Search = $"Search result for : {tag}";
                 foreach (var data in search)
                 {
                     ViewBag.DateInAgoFormat = date(data.DateCreated.ToLocalTime().Ticks);//calling the date method and adding to the viewbag
@@ -41,6 +56,7 @@ namespace Blog.Controllers
             return View(blogs.ToPagedList(page??1,9));
         }
 
+        //For displaying the blog categories for filtering
         public async Task<IActionResult> BlogFilter()
         {
             return PartialView("_BlogFilterPartial",await _context.Category.ToListAsync());

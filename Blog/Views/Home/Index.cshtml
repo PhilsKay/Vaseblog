@@ -191,9 +191,9 @@
                         <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                 </ol>
-                @if (ViewBag.SearchTitle != null)
+                @if (ViewBag.Search != null)
                 {
-                    <h4>@ViewBag.SearchTitle</h4>
+                    <h4>@ViewBag.Search</h4>
                 }
             </div>
         </div>
@@ -212,7 +212,7 @@
         <div class="sidebar-content">
             <form asp-action="Index" method="get">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..." name="searchTitle">
+                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..." name="title">
                     <span class="input-group-btn">
                         <button class="btn btn-secondary btn-search" type="submit">
                             <span class="bi bi-search"></span>
@@ -283,7 +283,7 @@
         }
         else
         {
-            <h4 class="text-danger">Opps no result for this.</h4>
+            <h4 class="text-danger text-center">Opps no result for this.</h4>
         }
 
 

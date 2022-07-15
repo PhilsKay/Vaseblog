@@ -44,6 +44,14 @@ namespace Blog.Controllers
             return PartialView("_LatestBlogsPartial", latest.ToPagedList(page ?? 1, 5));
         }
 
+        public async Task<IActionResult> ArchiveBlog(int? page)
+        {
+            var latest = await _context.BlogData.Include(m => m.CategoryName).OrderBy(c => c.DateCreated).ToListAsync();
+
+            return PartialView("_ArchiveBlogPartial", latest.ToPagedList(page ?? 1, 3));
+        }
+
+
         //This method gets the blog's date in ago format 
         public string date(Int64 blogDate)
         {
