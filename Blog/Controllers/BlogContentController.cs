@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Blog.Data;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace Blog.Controllers
 {
@@ -17,7 +18,7 @@ namespace Blog.Controllers
 
         public async Task<IActionResult> data(Guid? id)
         {
-            // confirm if the id is not empty
+            // confirm if the id is empty
             if(id == Guid.Empty)
             {
                 return NotFound();
@@ -26,14 +27,23 @@ namespace Blog.Controllers
             var check = await _context.BlogData.Where(c => c.BlogId == id).FirstOrDefaultAsync();
             if(check != null)
             {
-                var getCategoryName = await _context.Category.Where(c => c.CategoryId == check.CategoryId).FirstOrDefaultAsync();                //show the contents in view
+                //Find the category Id of the blog since the category name is null in the check variable
+                var getCategoryName = await _context.Category.Where(c => c.CategoryId == check.CategoryId).FirstOrDefaultAsync();
+                //show the contents of the category id in the viewbag and get the category name to display in the page
                 ViewBag.Category = getCategoryName.CategoryName;
-                ViewBag.DateInAgoFormat = date(check.DateCreated.ToLocalTime().Ticks);//calling the date method and adding to the viewbag
+                ViewBag.DateInAgoFormat = date(check.DateCreated.ToLocalTime().Ticks);//calling the date method and adds to the viewbag
                 return View(check);
             }
             return NotFound();
         }
-        
+
+        public async Task<IActionResult> LatestBlog(int? page)
+        {
+            var latest = await _context.BlogData.Include(m => m.CategoryName).OrderByDescending(c => c.DateCreated).ToListAsync();
+
+            return PartialView("_LatestBlogsPartial", latest.ToPagedList(page ?? 1, 5));
+        }
+
         //This method gets the blog's date in ago format 
         public string date(Int64 blogDate)
         {
@@ -78,5 +88,7 @@ namespace Blog.Controllers
                 return years <= 1 ? "one year ago" : years + " years ago";
             }
         }
+
+
     }
 }

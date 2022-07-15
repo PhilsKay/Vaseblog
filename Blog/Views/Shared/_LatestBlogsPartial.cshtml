@@ -1,0 +1,14 @@
+﻿@using Blog.Models;
+@using X.PagedList.Mvc.Core
+@using X.PagedList
+@model X.PagedList.IPagedList<BlogData>
+
+<ul class="list-sidebar">
+    @foreach (var item in Model)
+    {
+         <li>
+            <a asp-area="" asp-controller="BlogContent" asp-action="data"
+           asp-route-Id="@item.BlogId">@item.Title</a>
+        </li>
+    }
+</ul>
