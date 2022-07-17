@@ -66,23 +66,35 @@ namespace Blog.Controllers
         [ActionName("UserRole")]
         public async Task<IActionResult> UserRole(string user)
         {
+            //Find the user from the database
             var find = await _context.Users.Where(c => c.UserName.Equals(user)).FirstOrDefaultAsync();
+            //Check if the result is null or exist
             if(find != null)
             {
-                var result = await userManager.AddToRoleAsync(find, "Administrator");
-                if (result.Succeeded)
+                //find if the user is already present in the role specified
+                var userRoleExist = await userManager.IsInRoleAsync(find, "Administrator");
+                if (!userRoleExist)
                 {
-                    ViewData["roleUserCreate"] = "User added as Administrator";
-                    return View();
+                    // If the user not present then add to role
+                    var result = await userManager.AddToRoleAsync(find, "Administrator");
+                    if (result.Succeeded)
+                    {
+                        ViewData["roleUserCreate"] = "User added as Administrator";
+                        return View();
+                    }
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                        return View();
+                    }
                 }
-                foreach (IdentityError error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                    return View();
-                }
+                
+                ViewData["UserExist"] = "User already exist in the role";
+                return View();
+
             }
             ViewData["notExist"] = "User does not exist";
-            return View(user);
+            return View();
         }
     }
 }

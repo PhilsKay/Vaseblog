@@ -7,3 +7,23 @@
     <span class="filter-item" data-filter='@item.CategoryName'>@item.CategoryName</span>
     }
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+  
+          /** Category filter
+* */
+    $(document).ready(function () {
+        $('.filter-item').click(function () {
+            const value = $(this).attr('data-filter');
+            if (value == 'all') {
+                $('.card').show('1000');
+            } else {
+                $('.card').not('.' + value).hide('1000');
+                $('.card').filter('.' + value).show('1000');
+            }
+        })
+    });
+  
+    </script>
+}

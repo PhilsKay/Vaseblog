@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authentication
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -40,10 +42,14 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " asp-area="Admin" asp-controller="Home" asp-action="Index">Dashboard</a></li>
+            @if(User.Identity.IsAuthenticated && User.IsInRole("Administrator")){
+                 <li><a class="nav-link scrollto " asp-area="Admin" asp-controller="Home" asp-action="Index">Dashboard</a></li>
+            }
+         
           <li><a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
           <li><a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
           <li><a class="nav-link scrollto " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+          <partial name="_LoginPartial" />
           
          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -63,7 +69,6 @@
             </ul>
           </li>-->
         </ul>
-          <partial name="_LoginPartial" />
 
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

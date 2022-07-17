@@ -1,8 +1,5 @@
 /**
-* Template Name: DevFolio - v4.7.1
-* Template URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+
 */
 (function() {
   "use strict";
@@ -181,23 +178,7 @@
     selector: '.portfolio-lightbox'
   });
 
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
+
 
   /**
    * Portfolio details slider
@@ -226,4 +207,11 @@
     });
   }
 
+  
+    //Add active to category filter btn
+   // $('filter-item').click(function () {
+     //   $(this.addClass())
+    //})
 })()
+
+
