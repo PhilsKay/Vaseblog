@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9Gq5qoeOAGosshwZSw5JkpiOfWuSCrBAyF7ddllK/FeJ9Mr06HIZwyAvplf48+2uCjRwnfIaD5BepW4rvyh18g==",
+  "dgSpecHash": "Nea/1DGsff59Bjp2/q/hiXEWvqsEl/2bq6Wg4yzU6jpiUUuPVDIRG3KnAuN8xruP5fVrunRW49U5qWq850dTQg==",
   "success": true,
-  "projectFilePath": "C:\\openSource\\Vaseblog\\Blog\\Vaseblog\\Blog\\Blog.csproj",
+  "projectFilePath": "C:\\openSource\\Vaseblog\\Blog\\Blog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\danikay tech\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\danikay tech\\.nuget\\packages\\jetbrains.annotations\\2022.1.0\\jetbrains.annotations.2022.1.0.nupkg.sha512",
