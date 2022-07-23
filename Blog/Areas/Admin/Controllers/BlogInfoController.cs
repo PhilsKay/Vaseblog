@@ -1,5 +1,6 @@
 ﻿using Blog.Data;
 using Blog.Models;
+using Blog.Repository.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,23 +12,25 @@ namespace Blog.Areas.Admin.Controllers
     [Authorize(Roles = "Administrator")]
     public class BlogInfoController : Controller
     {
-        private readonly Context _contect;
+        private readonly IBlogservice blogservice;
+        private readonly ICategoryService categoryService;
         private readonly IWebHostEnvironment _env;
-        public BlogInfoController(Context context, IWebHostEnvironment env)
+        public BlogInfoController(IBlogservice blogservice,ICategoryService categoryService, IWebHostEnvironment env)
         {
-            _contect = context;
+            this.categoryService = categoryService;
+            this.blogservice = blogservice; 
             _env = env; 
         }
 
-        public async Task<IActionResult> BlogList()
+        public IActionResult BlogList()
         {
-            var obj = await _contect.BlogData.Include(c =>c.CategoryName).ToListAsync();
+            var obj = blogservice.GetBlogs().Result;
             return View(obj);
         }
 
         public IActionResult Add()
         {
-            ViewBag.Category = new SelectList(_contect.Category.ToList(), "CategoryId", "CategoryName");
+            ViewBag.Category = new SelectList(categoryService.GetCategories().Result, "CategoryId", "CategoryName");
             return View();
         }
 
@@ -48,8 +51,7 @@ namespace Blog.Areas.Admin.Controllers
                     obj.ImageUrl = "images/" + image.FileName;
 
                 }
-                await _contect.BlogData.AddAsync(obj);
-                await _contect.SaveChangesAsync();
+                _ = blogservice.AddBlog(obj);
                 TempData["AddBlog"] = "Blog saved Successfully";
                 return RedirectToAction("BlogList");
             }
@@ -60,15 +62,14 @@ namespace Blog.Areas.Admin.Controllers
 
 
         [ActionName("Delete")]
-        public async Task<IActionResult> Delete(Guid id)
+        public IActionResult Delete(Guid? id)
         {
             if (id != Guid.Empty)
             {
-                var checkBlog = await _contect.BlogData.FindAsync(id);
+                var checkBlog = blogservice.GetBlogById(id).Result;
                 if (checkBlog != null)
                 {
-                    _contect.BlogData.Remove(checkBlog);
-                    _contect.SaveChanges();
+                    blogservice.DeleteBlog(checkBlog);
                     TempData["DeleteBlog"] = "Blog deleted Successfully";
                     return RedirectToAction("BlogList");
                 }
@@ -80,18 +81,18 @@ namespace Blog.Areas.Admin.Controllers
         }
 
         //===== Go to Edit View //
-        public async Task<IActionResult> Edit(Guid id)
+        public IActionResult Edit(Guid? id)
         {
             if (id == Guid.Empty)
             {
                 return NotFound();
 
             }
-            var checkBlog = await _contect.BlogData.FindAsync(id);
+            var checkBlog = blogservice.GetBlogById(id).Result;
             //var category = await _contect.Category.Where(c => c.CategoryId == id).FirstOrDefaultAsync();
             if (checkBlog != null)
             {
-                ViewBag.Category = new SelectList(_contect.Category.ToList(), "CategoryId", "CategoryName");
+                ViewBag.Category = new SelectList(categoryService.GetCategories().Result, "CategoryId", "CategoryName");
                 return View(checkBlog);
             }
             return NotFound();
@@ -127,8 +128,7 @@ namespace Blog.Areas.Admin.Controllers
                 obj.Tags.AddRange(existingTags);
                 var date = obj.DateCreated.ToUniversalTime();
                 obj.DateCreated = date;
-                _contect.BlogData.Update(obj);
-                await _contect.SaveChangesAsync();
+               _ = blogservice.UpdateBlog(obj);
                 TempData["EditBlog"] = "Blog edited successfully";
                 return RedirectToAction("BlogList");
             }

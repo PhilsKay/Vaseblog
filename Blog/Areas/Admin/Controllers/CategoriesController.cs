@@ -1,5 +1,6 @@
 ﻿using Blog.Data;
 using Blog.Models;
+using Blog.Repository.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -14,14 +15,15 @@ namespace Blog.Areas.Admin.Controllers
 
     public class CategoriesController : Controller
     {
-        private readonly Context _contect;
-        public CategoriesController(Context context)
+        //configure services in controller
+        private readonly ICategoryService categoryService;
+        public CategoriesController(ICategoryService categoryService)
         {
-            _contect = context;
+            this.categoryService = categoryService;
         }
-        public async Task<IActionResult> CategoryList()
+        public IActionResult CategoryList()
         {
-            var obj = await _contect.Category.ToListAsync();
+            var obj = categoryService.GetCategories().Result;
             return View(obj);
         }
 
@@ -33,12 +35,11 @@ namespace Blog.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ActionName("Add")]
-        public async Task<IActionResult> AddCategory(Category obj)
+        public IActionResult AddCategory(Category obj)
         {
             if (ModelState.IsValid)
             {
-                await _contect.Category.AddAsync(obj);
-                await _contect.SaveChangesAsync();
+                _ = categoryService.AddCategory(obj).Result;
                 TempData["AddCategory"] = "Category saved Successfully";
                 return RedirectToAction("CategoryList");
             }
@@ -49,15 +50,14 @@ namespace Blog.Areas.Admin.Controllers
 
 
         [ActionName("Delete")]
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id != null)
             {
-                var category = await _contect.Category.FindAsync(id);
+                var category = categoryService.GetCategoryById(id).Result;
                 if (category != null)
                 {
-                    _contect.Category.Remove(category);
-                    _contect.SaveChanges();
+                    categoryService.DeleteCategory(category);
                     TempData["DeleteCategory"] = "Category deleted Successfully";
                     return RedirectToAction("CategoryList");
                 }
@@ -69,15 +69,14 @@ namespace Blog.Areas.Admin.Controllers
         }
 
         //===== Go to Edit View //
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
 
             }
-            var category = await _contect.Category.FindAsync(id);   
-            //var category = await _contect.Category.Where(c => c.CategoryId == id).FirstOrDefaultAsync();
+            var category = categoryService.GetCategoryById(id).Result;   
             if (category != null)
             {
                 return View(category);
@@ -90,12 +89,11 @@ namespace Blog.Areas.Admin.Controllers
         [ActionName("Edit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditCategory(Category obj)
+        public IActionResult EditCategory(Category obj)
         {
                 if (ModelState.IsValid)
                 {
-                        _contect.Category.Update(obj);
-                        await _contect.SaveChangesAsync();
+                       _ = categoryService.UpdateCategory(obj).Result; 
                         TempData["EditCategory"] = "Category edited successfully";
                         return RedirectToAction("CategoryList");
                 }

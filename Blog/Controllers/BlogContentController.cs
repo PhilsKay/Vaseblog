@@ -2,21 +2,24 @@
 using Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
+using Blog.Repository.IServices;
 
 namespace Blog.Controllers
 {
     public class BlogContentController : Controller
     {
         private readonly ILogger<BlogContentController> _logger;
-        private readonly Context _context;
+        private readonly IBlogservice blogservice;
+        private readonly ICategoryService categoryService;
 
-        public BlogContentController(ILogger<BlogContentController> logger,Context context)
+        public BlogContentController(ILogger<BlogContentController> logger,IBlogservice blogservice, ICategoryService categoryService)
         {
             _logger = logger;
-            _context = context;
+            this.blogservice = blogservice;
+            this.categoryService = categoryService;
         }
 
-        public async Task<IActionResult> data(Guid? id)
+        public IActionResult data(Guid? id)
         {
             // confirm if the id is empty
             if(id == Guid.Empty)
@@ -24,11 +27,11 @@ namespace Blog.Controllers
                 return NotFound();
             }
             //check if the id is in the database
-            var check = await _context.BlogData.Where(c => c.BlogId == id).FirstOrDefaultAsync();
+            var check = blogservice.GetBlogById(id).Result;
             if(check != null)
             {
                 //Find the category Id of the blog since the category name is null in the check variable
-                var getCategoryName = await _context.Category.Where(c => c.CategoryId == check.CategoryId).FirstOrDefaultAsync();
+                var getCategoryName = categoryService.GetCategoryById(check.CategoryId).Result;
                 //show the contents of the category id in the viewbag and get the category name to display in the page
                 ViewBag.Category = getCategoryName.CategoryName;
                 ViewBag.DateInAgoFormat = date(check.DateCreated.ToLocalTime().Ticks);//calling the date method and adds to the viewbag
@@ -37,18 +40,18 @@ namespace Blog.Controllers
             return NotFound();
         }
 
-        public async Task<IActionResult> LatestBlog(int? page)
+        public IActionResult LatestBlog(int? page)
         {
-            var latest = await _context.BlogData.Include(m => m.CategoryName).OrderByDescending(c => c.DateCreated).ToListAsync();
+            var latest = blogservice.GetBlogs().Result;
 
             return PartialView("_LatestBlogsPartial", latest.ToPagedList(page ?? 1, 5));
         }
 
-        public async Task<IActionResult> ArchiveBlog(int? page)
+        public IActionResult ArchiveBlog(int? page)
         {
-            var latest = await _context.BlogData.Include(m => m.CategoryName).OrderBy(c => c.DateCreated).ToListAsync();
+            var archive = blogservice.GetArchiveBlogs().Result;
 
-            return PartialView("_ArchiveBlogPartial", latest.ToPagedList(page ?? 1, 3));
+            return PartialView("_ArchiveBlogPartial", archive.ToPagedList(page ?? 1, 3));
         }
 
 

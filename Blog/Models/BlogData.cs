@@ -17,7 +17,6 @@ namespace Blog.Models
         [StringLength(300, ErrorMessage ="Should not exceed 300 characters and atleast 50 chars.",MinimumLength =50)]
         public string Summary { get; set; }
 
-        [Required]
         [Display(Name = "Tags")]
         public List<string> Tags { get; set; }
 

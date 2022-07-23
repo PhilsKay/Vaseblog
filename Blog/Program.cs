@@ -1,6 +1,8 @@
 using Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Blog.Repository.IServices;
+using Blog.Repository.ServicesData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//add repository services
+builder.Services.AddScoped<ICategoryService, BlogDataService>();
+builder.Services.AddScoped<IBlogservice, BlogDataService>();
 
 builder.Services.AddDbContext<Context>(options => options.UseNpgsql(
     builder.Configuration.GetConnectionString("DefaultConnection")));
