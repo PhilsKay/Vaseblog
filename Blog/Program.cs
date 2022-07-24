@@ -55,6 +55,13 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.SlidingExpiration = true;
 });
 
+// Login with google Auth
+builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = builder.Configuration["Google:ClientId"];
+    googleOptions.ClientSecret = builder.Configuration["Google:UserSecret"];
+});
+
 
 var app = builder.Build();
 
