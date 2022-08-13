@@ -37,6 +37,8 @@ namespace Blog.Models
 
         [Display(Name = "DateTime Created")]
         public DateTime DateCreated { get; set; }
+        public List<MainComment> Comments { get; set; }
+
     }
 
 }

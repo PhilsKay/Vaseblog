@@ -1172,3 +1172,10 @@ footer .credits {
 footer .credits a {
   color: #fff;
 }
+
+/*Form css*/
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

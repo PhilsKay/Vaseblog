@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Data\" />
-    <Folder Include="Pages\" />
     <Folder Include="wwwroot\frolacss\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />

@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authentication
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Philskay Blog</title>
+  <meta content="Tech blog for software developers, software engineers, etc." name="description">
+  <meta content="Html, Css, Javascript, C#, PostgresSql, Asp.Net core, Asp.net Identity" name="keywords">
+  <meta name="author" content="PhilsKay" />
+
+  <!-- Favicons -->
+  <link href="~/assets/img/favicon.png" rel="icon">
+  <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true">
+  <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" asp-append-version="true">
+  
+
+  <!-- Main CSS File -->
+  <link href="~/assets/css/style.css" rel="stylesheet" asp-append-version="true">
+
+  <!-- =======================================================
+  * Author: PhilsKay
+  ======================================================== -->
+</head>
+
+<body>
+
+    <div class="container">
+            @RenderBody()
+    </div>
+
+  <!-- Vendor JS Files -->
+  <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="~/assets/vendor/typed.js/typed.min.js"></script>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+  <!--  Main JS File -->
+  <script src="~/assets/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

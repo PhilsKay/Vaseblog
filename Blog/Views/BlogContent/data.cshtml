@@ -1,5 +1,8 @@
 ﻿@using Blog.Models;
 @model BlogData;
+@using Blog.ViewModels
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Authentication
 @{
     ViewData["Title"] = "Blog details";
 }
@@ -73,105 +76,77 @@
                     </div>
                     <div class="box-comments">
                         <div class="title-box-2">
-                            <h4 class="title-comments title-left">Comments (34)</h4>
+                            <h4 class="title-comments title-left">Comments (@Model.Comments.Count())</h4>
                         </div>
-                        <ul class="list-comments">
-                            <li>
-                                <div class="comment-avatar">
-                                    <img src="assets/img/testimonial-2.jpg" alt="">
-                                </div>
+                        <ul class="list-comments" list="@Model.Comments" count="0">
+                            @foreach(var comment in Model.Comments)
+                            {
+                                  <li>
+                                
                                 <div class="comment-details">
-                                    <h4 class="comment-author">Oliver Colmenares</h4>
-                                    <span>18 Sep 2017</span>
+                                    <h4 class="comment-author">@comment.Author</h4>
+                                    <span>@comment.DateCreated</span>
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                        ipsam temporibus maiores
-                                        quae natus libero optio, at qui beatae ducimus placeat debitis voluptates amet corporis.
+                                        @Html.DisplayFor(m => @comment.Body)
                                     </p>
-                                    <a href="3">Reply</a>
+                                        @if (!User.Identity.IsAuthenticated)
+                                        {
+                                            <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to reply</a>
+                                        }else
+                                        {
+                                        <a aria-expanded="false" href="@($"replyComment/{comment.Id}")"
+                                        data-toggle="collapse">Reply</a>
+
+                                        }
+                                </div>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <div class="collapse" id="@($"replyComment{comment.Id}")">
+                                            <form asp-action="AddComment">
+                                                <input asp-for="@Model.BlogId" readonly hidden>
+                                                <input asp-for="@comment.SubComments." readonly value="@comment.Id" hidden>
+                                                <div class="form-group">
+                                                    <label for="sub-comment">Write a reply</label>
+                                                    <textarea asp-for="@comment.Body" class="form-control" rows="3"></textarea>
+                                                    <button type="submit" class="btn btn-outline-primary post-btn">Post</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    }
+                                </li>
+                                @foreach(var reply in comment.SubComments)
+                                {
+                                    <li class="comment-children">
+                               
+                                <div class="comment-details">
+                                    <h4 class="comment-author">@reply.Author</h4>
+                                    <span>@reply.DateCreated</span>
+                                    <p>
+                                        @Html.DisplayFor(m => @reply.Body)
+                                    </p>
                                 </div>
                             </li>
-                            <li>
-                                <div class="comment-avatar">
-                                    <img src="assets/img/testimonial-4.jpg" alt="">
-                                </div>
-                                <div class="comment-details">
-                                    <h4 class="comment-author">Carmen Vegas</h4>
-                                    <span>18 Sep 2017</span>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                        ipsam temporibus maiores
-                                        quae natus libero optio, at qui beatae ducimus placeat debitis voluptates amet corporis,
-                                        veritatis deserunt.
-                                    </p>
-                                    <a href="3">Reply</a>
-                                </div>
-                            </li>
-                            <li class="comment-children">
-                                <div class="comment-avatar">
-                                    <img src="assets/img/testimonial-2.jpg" alt="">
-                                </div>
-                                <div class="comment-details">
-                                    <h4 class="comment-author">Oliver Colmenares</h4>
-                                    <span>18 Sep 2017</span>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                        ipsam temporibus maiores
-                                        quae.
-                                    </p>
-                                    <a href="3">Reply</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="comment-avatar">
-                                    <img src="assets/img/testimonial-2.jpg" alt="">
-                                </div>
-                                <div class="comment-details">
-                                    <h4 class="comment-author">Oliver Colmenares</h4>
-                                    <span>18 Sep 2017</span>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores reprehenderit, provident cumque
-                                        ipsam temporibus maiores
-                                        quae natus libero optio.
-                                    </p>
-                                    <a href="3">Reply</a>
-                                </div>
-                            </li>
+                                }
+                                
+                            }
                         </ul>
                     </div>
                     <div class="form-comments">
                         <div class="title-box-2">
                             <h3 class="title-left">
-                                Leave a Reply
+                                Leave a Comment
                             </h3>
                         </div>
-                        <form class="form-mf">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control input-mf" id="inputName" placeholder="Name *" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control input-mf" id="inputEmail1" placeholder="Email *" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <input type="url" class="form-control input-mf" id="inputUrl" placeholder="Website">
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <textarea id="textMessage" class="form-control input-mf" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
-                                </div>
-                            </div>
-                        </form>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            await Html.RenderPartialAsync("_CommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = 0 });
+
+                        }else
+                        {
+                          <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to comment</a>
+                        }
+
+                        
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -243,5 +218,19 @@
         //Display the partial views
         $('#latestBlogs').load("/BlogContent/LatestBlog")
         $('#archiveBlog').load("/BlogContent/ArchiveBlog")
+    </script>
+    <script>
+$('[data-toggle="collapse"]').on('click', function() {
+    var $this = $(this),
+        $parent = typeof $this.data('parent') !=== 'undefined' ? $(this.data('parent')) : undefined;
+    if ($parent === undefined) {/* Just toggle my*/
+        $this.find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
+        return true; 
+    }
+    /*  Open element will be close if parent !== undefined */
+    var currentIcon = $this.find(',glyphicon');
+    currentIcon.toggleClass('glyphicon-plus glyphicon-minus');
+    $parent.find('.glyphicon').not(currentIcon).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+});
     </script>
 }

@@ -11,6 +11,10 @@ namespace Blog.Data
         }
         public DbSet<Category> Category { get; set; }
         public DbSet<BlogData> BlogData { get; set; }
+        public DbSet<MainComment> MainComment { get; set; }
+        public DbSet<SubComment> subComments { get; set; }
+
+
 
 
     }

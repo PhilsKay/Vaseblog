@@ -3,6 +3,8 @@ using Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 using Blog.Repository.IServices;
+using Blog.ViewModels;
+using System.Security.Claims;
 
 namespace Blog.Controllers
 {
@@ -52,6 +54,14 @@ namespace Blog.Controllers
             var archive = blogservice.GetArchiveBlogs().Result;
 
             return PartialView("_ArchiveBlogPartial", archive.ToPagedList(page ?? 1, 3));
+        }
+        [HttpPost]  
+        public IActionResult AddComment(CommentViewModel comment, ClaimsPrincipal claim)
+        {
+            if (!ModelState.IsValid)
+                return data(comment.BlogId);
+            var result = blogservice.Comment(comment, claim);
+                return View(result);
         }
 
 
