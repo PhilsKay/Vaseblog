@@ -1,5 +1,4 @@
-﻿
-@using Blog.Models;
+﻿@using Blog.Models;
 @model BlogData
 @using Blog.ViewModels
 @using Microsoft.AspNetCore.Identity
@@ -80,55 +79,67 @@
                             <h4 class="title-comments title-left">Comments (@Model.Comments.Count())</h4>
                         </div>
                         <ul class="list-comments" list="@Model.Comments" count="0">
-                            @foreach(var comment in Model.Comments)
+                            @foreach (var comment in Model.Comments)
                             {
-                                  <li>
-                                
-                                <div class="comment-details">
-                                    <h4 class="comment-author">@comment.Author</h4>
-                                    <span>@comment.DateCreated</span>
-                                    <p>
-                                        @Html.DisplayFor(m => @comment.Body)
-                                    </p>
+                                <li>
+
+                                    <div class="comment-details">
+                                        <h4 class="comment-author">@comment.Author</h4>
+                                        <span>@comment.DateCreated.ToLocalTime()</span>
+                                        <p>
+                                            @Html.DisplayFor(m => @comment.Body)
+                                        </p>
+                                        <div>
+                                        <form asp-action="AddComment">
+                                            <input asp-for="@Model.BlogId" readonly hidden>
+                                            <input asp-for="@comment.SubComments." readonly value="@comment.Id" hidden>
+                                            <div class="form-group">
+                                                <label for="sub-comment">Write a reply</label>
+                                                <textarea asp-for="@comment.Body" class="form-control" rows="3"></textarea>
+                                                <button type="submit" class="btn btn-outline-primary post-btn">Post</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                         @if (!User.Identity.IsAuthenticated)
                                         {
-                                         //   <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to reply</a>
-                                        }else
+                                            //   <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to reply</a>
+                                        }
+                                        else
                                         {
-                                        <a aria-expanded="false" href="@($"replyComment/{comment.Id}")"
-                                        data-toggle="collapse">Reply</a>
+                                            <a aria-expanded="false" href="@($"#replyComment{comment.Id}")"
+                                       data-toggle="collapse">Reply</a>
 
                                         }
-                                </div>
+                                    </div>
                                     @if (User.Identity.IsAuthenticated)
                                     {
-                                        <div class="collapse" id="@($"replyComment{comment.Id}")">
-                                            <form asp-action="AddComment">
-                                                <input asp-for="@Model.BlogId" readonly hidden>
-                                                <input asp-for="@comment.SubComments." readonly value="@comment.Id" hidden>
-                                                <div class="form-group">
-                                                    <label for="sub-comment">Write a reply</label>
-                                                    <textarea asp-for="@comment.Body" class="form-control" rows="3"></textarea>
-                                                    <button type="submit" class="btn btn-outline-primary post-btn">Post</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    }
+                                    <div class="collapse" id="@($"replyComment{comment.Id}")">
+                                        <form asp-action="AddComment">
+                                            <input asp-for="@Model.BlogId" readonly hidden>
+                                            <input asp-for="@comment.SubComments." readonly value="@comment.Id" hidden>
+                                            <div class="form-group">
+                                                <label for="sub-comment">Write a reply</label>
+                                                <textarea asp-for="@comment.Body" class="form-control" rows="3"></textarea>
+                                                <button type="submit" class="btn btn-outline-primary post-btn">Post</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                      }
                                 </li>
-                                @foreach(var reply in comment.SubComments)
+                                @foreach (var reply in comment.SubComments)
                                 {
                                     <li class="comment-children">
-                               
-                                <div class="comment-details">
-                                    <h4 class="comment-author">@reply.Author</h4>
-                                    <span>@reply.DateCreated</span>
-                                    <p>
-                                        @Html.DisplayFor(m => @reply.Body)
-                                    </p>
-                                </div>
-                            </li>
+
+                                        <div class="comment-details">
+                                            <h4 class="comment-author">@reply.Author</h4>
+                                            <span>@reply.DateCreated.ToLocalTime()</span>
+                                            <p>
+                                                @Html.DisplayFor(m => @reply.Body)
+                                            </p>
+                                        </div>
+                                    </li>
                                 }
-                                
+
                             }
                         </ul>
                     </div>
@@ -140,14 +151,15 @@
                         </div>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            await Html.RenderPartialAsync("_CommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = 0});
+                            await Html.RenderPartialAsync("_CommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = 0 });
 
-                        }else
+                        }
+                        else
                         {
-                        //  <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to comment</a>
+                            //  <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to comment</a>
                         }
 
-                        
+
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -199,7 +211,7 @@
                                 @foreach (var tags in Model.Tags)
                                 {
                                     <li>
-                                        <a asp-area="" asp-controller="Home" asp-action="Index" name="tag" id="tag" >@Html.DisplayFor(m => tags)</a>
+                                        <a asp-area="" asp-controller="Home" asp-action="Index" name="tag" id="tag">@Html.DisplayFor(m => tags)</a>
                                         @{
                                         }
                                     </li>
@@ -219,19 +231,21 @@
         //Display the partial views
         $('#latestBlogs').load("/BlogContent/LatestBlog")
         $('#archiveBlog').load("/BlogContent/ArchiveBlog")
+
     </script>
     <script>
-$('[data-toggle="collapse"]').on('click', function() {
-    var $this = $(this),
-        $parent = typeof $this.data('parent') !=== 'undefined' ? $(this.data('parent')) : undefined;
-    if ($parent === undefined) {/* Just toggle my*/
-        $this.find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
-        return true; 
-    }
-    /*  Open element will be close if parent !== undefined */
-    var currentIcon = $this.find(',glyphicon');
-    currentIcon.toggleClass('glyphicon-plus glyphicon-minus');
-    $parent.find('.glyphicon').not(currentIcon).removeClass('glyphicon-minus').addClass('glyphicon-plus');
-});
+        
+        $('[data-toggle="collapse"]').on('click', function() {
+            var $this = $(this),
+                $parent = typeof $this.data('parent') !== 'undefined' ? $($this.data('parent')) : undefined;
+            if ($parent === undefined) {/* Just toggle my*/
+                $this.find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
+                return true;
+            }
+            /*  Open element will be close if parent !== undefined */
+            var currentIcon = $this.find('.glyphicon');
+            currentIcon.toggleClass('glyphicon-plus glyphicon-minus');
+            $parent.find('.glyphicon').not(currentIcon).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+        });
     </script>
 }

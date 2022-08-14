@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Threading.Tasks;
+
 
 
 
@@ -52,9 +54,10 @@ namespace Blog.Repository.ServicesData
                 {
                     Body = comment.Body,
                     Author = await userManager.GetUserAsync(claim),
-                    DateCreated = DateTime.UtcNow
+                    DateCreated = DateTime.UtcNow,
+                    SubComments = new List<SubComment>()
                 });
-                var update = UpdateBlog(blog);
+                await UpdateBlog(blog);
             }
             else
             {
@@ -147,11 +150,10 @@ namespace Blog.Repository.ServicesData
         //}
 
 
-        public async Task<BlogData> UpdateBlog(BlogData blogData)
+        public async Task UpdateBlog(BlogData blogData)
         {
             _context.BlogData.Update(blogData);
             await _context.SaveChangesAsync();
-            return blogData;
         }
 
         public async Task<Category> UpdateCategory(Category category)

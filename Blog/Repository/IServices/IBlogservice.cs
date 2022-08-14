@@ -12,7 +12,7 @@ namespace Blog.Repository.IServices
         Task<BlogData> Comment(CommentViewModel comment, ClaimsPrincipal claim);
         void AddSubComment(SubComment subComment);
         Task<BlogData> AddBlog(BlogData blogData);  
-        Task<BlogData> UpdateBlog(BlogData blogData);   
+        Task UpdateBlog(BlogData blogData);   
         void DeleteBlog(BlogData blogData);   
     }
 }

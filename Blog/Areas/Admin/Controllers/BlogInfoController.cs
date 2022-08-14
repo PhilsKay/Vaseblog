@@ -128,7 +128,7 @@ namespace Blog.Areas.Admin.Controllers
                 obj.Tags.AddRange(existingTags);
                 var date = obj.DateCreated.ToUniversalTime();
                 obj.DateCreated = date;
-               _ = blogservice.UpdateBlog(obj);
+                await blogservice.UpdateBlog(obj);
                 TempData["EditBlog"] = "Blog edited successfully";
                 return RedirectToAction("BlogList");
             }

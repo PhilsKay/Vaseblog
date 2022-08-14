@@ -5,6 +5,7 @@ using X.PagedList;
 using Blog.Repository.IServices;
 using Blog.ViewModels;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Blog.Controllers
 {
@@ -60,7 +61,7 @@ namespace Blog.Controllers
         {
             if (!ModelState.IsValid)
                 return data(comment.BlogId);
-            var result = blogservice.Comment(comment, claim);
+            var result = blogservice.Comment(comment, claim).Result;
                 return View("data",result);
         }
 
