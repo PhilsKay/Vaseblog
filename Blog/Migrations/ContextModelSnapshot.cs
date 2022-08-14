@@ -89,7 +89,7 @@ namespace Blog.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Author")
+                    b.Property<string>("AuthorId")
                         .HasColumnType("text");
 
                     b.Property<Guid?>("BlogDataBlogId")
@@ -102,6 +102,8 @@ namespace Blog.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("BlogDataBlogId");
 
@@ -116,7 +118,7 @@ namespace Blog.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Author")
+                    b.Property<string>("AuthorId")
                         .HasColumnType("text");
 
                     b.Property<string>("Body")
@@ -129,6 +131,8 @@ namespace Blog.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
 
                     b.HasIndex("MainCommentId");
 
@@ -344,18 +348,30 @@ namespace Blog.Migrations
 
             modelBuilder.Entity("Blog.Models.MainComment", b =>
                 {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
                     b.HasOne("Blog.Models.BlogData", null)
                         .WithMany("Comments")
                         .HasForeignKey("BlogDataBlogId");
+
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("Blog.Models.SubComment", b =>
                 {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
                     b.HasOne("Blog.Models.MainComment", null)
                         .WithMany("SubComments")
                         .HasForeignKey("MainCommentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

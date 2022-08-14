@@ -1,12 +1,12 @@
 ﻿@using Blog.ViewModels;
-@model CommentViewModel;
-<form class="form-mf" asp-action="AddComment">
+@model CommentViewModel
+<form class="form-mf" method="post" asp-action="AddComment">
     <div class="row">
         <div class="col-md-12 mb-3">
             <input asp-for="BlogId" readonly hidden>
             <input asp-for="MainCommentId" readonly hidden>
             <div class="form-group">
-                <textarea asp-for="Body" id="textMessage" class="form-control input-mf" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
+                <textarea asp-for="Body"  id="textMessage" class="form-control input-mf" placeholder="Comment *" cols="45" rows="8" required></textarea>
             </div>
         </div>
         <div class="col-md-12">

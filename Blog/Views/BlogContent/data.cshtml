@@ -1,5 +1,6 @@
-﻿@using Blog.Models;
-@model BlogData;
+﻿
+@using Blog.Models;
+@model BlogData
 @using Blog.ViewModels
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.Authentication
@@ -91,7 +92,7 @@
                                     </p>
                                         @if (!User.Identity.IsAuthenticated)
                                         {
-                                            <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to reply</a>
+                                         //   <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to reply</a>
                                         }else
                                         {
                                         <a aria-expanded="false" href="@($"replyComment/{comment.Id}")"
@@ -139,11 +140,11 @@
                         </div>
                         @if (User.Identity.IsAuthenticated)
                         {
-                            await Html.RenderPartialAsync("_CommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = 0 });
+                            await Html.RenderPartialAsync("_CommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = 0});
 
                         }else
                         {
-                          <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to comment</a>
+                        //  <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to comment</a>
                         }
 
                         

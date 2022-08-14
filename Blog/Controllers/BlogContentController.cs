@@ -61,7 +61,7 @@ namespace Blog.Controllers
             if (!ModelState.IsValid)
                 return data(comment.BlogId);
             var result = blogservice.Comment(comment, claim);
-                return View(result);
+                return View("data",result);
         }
 
 

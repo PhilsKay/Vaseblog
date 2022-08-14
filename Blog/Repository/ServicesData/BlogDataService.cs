@@ -14,10 +14,12 @@ namespace Blog.Repository.ServicesData
     public class BlogDataService : ICategoryService, IBlogservice
     {
         private readonly Context _context;
+        private readonly UserManager<IdentityUser> userManager;
 
-        public BlogDataService(Context context)
+        public BlogDataService(Context context, UserManager<IdentityUser> user)
         {
             _context = context;
+            this.userManager = user;
         }
         
         public async Task<BlogData> AddBlog(BlogData blogData)
@@ -49,7 +51,7 @@ namespace Blog.Repository.ServicesData
                 blog.Comments.Add(new MainComment
                 {
                     Body = comment.Body,
-                    Author = claim.Identity.Name,
+                    Author = await userManager.GetUserAsync(claim),
                     DateCreated = DateTime.UtcNow
                 });
                 var update = UpdateBlog(blog);
@@ -60,7 +62,7 @@ namespace Blog.Repository.ServicesData
                 {
                     MainCommentId = comment.MainCommentId,  
                     Body = comment.Body,
-                    Author = claim.Identity.Name,
+                    Author = await userManager.GetUserAsync(claim),
                     DateCreated = DateTime.UtcNow
                 };
                 AddSubComment(subComment);
