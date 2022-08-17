@@ -57,11 +57,11 @@ namespace Blog.Controllers
             return PartialView("_ArchiveBlogPartial", archive.ToPagedList(page ?? 1, 3));
         }
         [HttpPost]  
-        public IActionResult AddComment(CommentViewModel comment, ClaimsPrincipal claim)
+        public IActionResult AddComment(CommentViewModel comment)
         {
             if (!ModelState.IsValid)
                 return data(comment.BlogId);
-            var result = blogservice.Comment(comment, claim).Result;
+            var result = blogservice.Comment(comment).Result;
                 return View("data",result);
         }
 

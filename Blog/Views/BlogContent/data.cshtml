@@ -84,21 +84,19 @@
                                 <li>
 
                                     <div class="comment-details">
-                                        <h4 class="comment-author">@comment.Author</h4>
+                                       
+                                            <h4 class="comment-author">@comment.Author</h4>
+                                        
+                                        
                                         <span>@comment.DateCreated.ToLocalTime()</span>
                                         <p>
                                             @Html.DisplayFor(m => @comment.Body)
                                         </p>
                                         <div>
-                                        <form asp-action="AddComment">
-                                            <input asp-for="@Model.BlogId" readonly hidden>
-                                            <input asp-for="@comment.SubComments." readonly value="@comment.Id" hidden>
-                                            <div class="form-group">
-                                                <label for="sub-comment">Write a reply</label>
-                                                <textarea asp-for="@comment.Body" class="form-control" rows="3"></textarea>
-                                                <button type="submit" class="btn btn-outline-primary post-btn">Post</button>
-                                            </div>
-                                        </form>
+                                        @{
+                            await Html.RenderPartialAsync("_SubCommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = comment.Id });
+
+                                        }
                                     </div>
                                         @if (!User.Identity.IsAuthenticated)
                                         {
@@ -114,15 +112,10 @@
                                     @if (User.Identity.IsAuthenticated)
                                     {
                                     <div class="collapse" id="@($"replyComment{comment.Id}")">
-                                        <form asp-action="AddComment">
-                                            <input asp-for="@Model.BlogId" readonly hidden>
-                                            <input asp-for="@comment.SubComments." readonly value="@comment.Id" hidden>
-                                            <div class="form-group">
-                                                <label for="sub-comment">Write a reply</label>
-                                                <textarea asp-for="@comment.Body" class="form-control" rows="3"></textarea>
-                                                <button type="submit" class="btn btn-outline-primary post-btn">Post</button>
-                                            </div>
-                                        </form>
+                                        @{
+                            await Html.RenderPartialAsync("_SubCommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = comment.Id });
+
+                                        }
                                     </div>
                                       }
                                 </li>
@@ -211,9 +204,12 @@
                                 @foreach (var tags in Model.Tags)
                                 {
                                     <li>
+                                        <form method="get" asp-action="GetTag">
+                                            <input name="tag" value="@tags" hidden >
+                                            <input type="submit" asp-action="Index" value="@tags" id="tag">
+                                        </form>
                                         <a asp-area="" asp-controller="Home" asp-action="Index" name="tag" id="tag">@Html.DisplayFor(m => tags)</a>
-                                        @{
-                                        }
+                                       
                                     </li>
                                 }
 
@@ -233,6 +229,9 @@
         $('#archiveBlog').load("/BlogContent/ArchiveBlog")
 
     </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
     <script>
         
         $('[data-toggle="collapse"]').on('click', function() {

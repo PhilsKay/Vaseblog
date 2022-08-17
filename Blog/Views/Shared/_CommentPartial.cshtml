@@ -7,6 +7,7 @@
             <input asp-for="MainCommentId" readonly hidden>
             <div class="form-group">
                 <textarea asp-for="Body"  id="textMessage" class="form-control input-mf" placeholder="Comment *" cols="45" rows="8" required></textarea>
+                <span asp-validation-for="Body"></span>
             </div>
         </div>
         <div class="col-md-12">

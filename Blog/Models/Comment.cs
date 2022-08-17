@@ -8,7 +8,7 @@ namespace Blog.Models
     {
         public int Id { get; set; }
         public string Body { get; set; }
-        public IdentityUser Author { get; set; }
+        public string Author { get; set; }
         public DateTime DateCreated { get; set; }
 
     }

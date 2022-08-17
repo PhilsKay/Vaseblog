@@ -1,4 +1,11 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Blog.ViewModels;
+@model CommentViewModel
+<form method="post" asp-action="AddComment">
+    <input asp-for="BlogId" readonly hidden>
+    <input asp-for="MainCommentId" readonly hidden>
+    <div class="form-group">
+        <label for="sub-comment">Write a reply</label>
+        <textarea asp-for="Body" class="form-control" rows="3"></textarea>
+        <button type="submit" class="btn btn-outline-primary post-btn">Post</button>
+    </div>
+</form>

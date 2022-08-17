@@ -17,11 +17,13 @@ namespace Blog.Repository.ServicesData
     {
         private readonly Context _context;
         private readonly UserManager<IdentityUser> userManager;
+        //private readonly IHttpContextAccessor httpContextAccessor;
 
-        public BlogDataService(Context context, UserManager<IdentityUser> user)
+        public BlogDataService(Context context, UserManager<IdentityUser> user/* IHttpContextAccessor httpContextAccessor*/)
         {
             _context = context;
             this.userManager = user;
+           // this.httpContextAccessor = httpContextAccessor;
         }
         
         public async Task<BlogData> AddBlog(BlogData blogData)
@@ -44,19 +46,20 @@ namespace Blog.Repository.ServicesData
             await _context.SaveChangesAsync();
         }
 
-        public async Task<BlogData> Comment(CommentViewModel comment, ClaimsPrincipal claim)
+        public async Task<BlogData> Comment(CommentViewModel comment)
         {
             var blog = await GetBlogById(comment.BlogId);
-            if(comment.MainCommentId == 0)
+            var httpContext = new HttpContextAccessor().HttpContext;
+            if (comment.MainCommentId == 0)
             {
                 blog.Comments = blog.Comments ?? new List<MainComment>();
                 blog.Comments.Add(new MainComment
                 {
                     Body = comment.Body,
-                    Author = await userManager.GetUserAsync(claim),
+                    Author = httpContext.User.Identity.Name,
                     DateCreated = DateTime.UtcNow,
                     SubComments = new List<SubComment>()
-                });
+                }) ;
                 await UpdateBlog(blog);
             }
             else
@@ -65,7 +68,7 @@ namespace Blog.Repository.ServicesData
                 {
                     MainCommentId = comment.MainCommentId,  
                     Body = comment.Body,
-                    Author = await userManager.GetUserAsync(claim),
+                    Author = httpContext.User.Identity.Name,
                     DateCreated = DateTime.UtcNow
                 };
                 AddSubComment(subComment);

@@ -22,6 +22,9 @@ builder.Services.AddIdentity<IdentityUser,IdentityRole>(options =>
 options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<Context>().AddDefaultTokenProviders().AddDefaultUI();
 
+//httpContect configuration
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 //password and username settings
 builder.Services.Configure<IdentityOptions>(options =>
 {
