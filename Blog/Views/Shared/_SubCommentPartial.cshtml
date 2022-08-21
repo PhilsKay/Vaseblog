@@ -6,6 +6,7 @@
     <div class="form-group">
         <label for="sub-comment" class="form-label">Write a reply</label>
         <textarea asp-for="Body" class="form-control" rows="3" cols="10"></textarea>
+        <span asp-validation-for="Body" class="text-danger"></span>
         <br />
         <button type="submit" class="btn btn-outline-warning post-btn">Post</button>
     </div>

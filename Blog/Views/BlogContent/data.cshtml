@@ -7,7 +7,7 @@
     ViewData["Title"] = "Blog details";
     <!--Count the total amount of comments in the post-->
     var countSubComments = 0;
-    foreach(var com in Model.Comments)
+    foreach (var com in Model.Comments)
     {
         countSubComments += com.SubComments.Count();
     }
@@ -101,19 +101,21 @@
                                         </p>
                                         @if (!User.Identity.IsAuthenticated)
                                         {
-                                            <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="~/BlogContent/data/@Model.BlogId" >Login to Reply</a>
-                                        }else{
+                                            <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="~/BlogContent/data/@Model.BlogId">Login to Reply</a>
+                                        }
+                                        else
+                                        {
                                             <div class="dropdown">
                                                 <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     Reply
                                                 </a>
-                                                 @{
-                                    await Html.RenderPartialAsync("_SubCommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = comment.Id });
+                                                @{
+                                                    await Html.RenderPartialAsync("_SubCommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = comment.Id });
 
-                                    }
+                                                }
                                             </div>
                                         }
-                                        
+
                                     </div>
 
                                 </li>
@@ -140,9 +142,15 @@
                                 Leave a Comment
                             </h3>
                         </div>
-                        @{
-                           await Html.RenderPartialAsync("_CommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = 0 });
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a class="lead" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="~/BlogContent/data/@Model.BlogId">Login to leave a Comment</a>
                         }
+                        else
+                        {
+                            await Html.RenderPartialAsync("_CommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = 0 });
+                        }
+
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -220,4 +228,4 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
+    }
