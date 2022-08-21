@@ -1,11 +1,12 @@
 ﻿@using Blog.ViewModels;
 @model CommentViewModel
-<form method="post" asp-action="AddComment">
+<form method="post" asp-action="AddComment" class="dropdown-menu p-4 w-100">
     <input asp-for="BlogId" readonly hidden>
     <input asp-for="MainCommentId" readonly hidden>
     <div class="form-group">
-        <label for="sub-comment">Write a reply</label>
-        <textarea asp-for="Body" class="form-control" rows="3"></textarea>
-        <button type="submit" class="btn btn-outline-primary post-btn">Post</button>
+        <label for="sub-comment" class="form-label">Write a reply</label>
+        <textarea asp-for="Body" class="form-control" rows="3" cols="10"></textarea>
+        <br />
+        <button type="submit" class="btn btn-outline-warning post-btn">Post</button>
     </div>
 </form>

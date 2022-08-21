@@ -10,7 +10,7 @@ namespace Blog.Repository.IServices
         Task<List<BlogData>> GetArchiveBlogs();
         Task<BlogData> GetBlogById(Guid? id);
         Task<BlogData> Comment(CommentViewModel comment);
-        void AddSubComment(SubComment subComment);
+        Task AddSubComment(SubComment subComment);
         Task<BlogData> AddBlog(BlogData blogData);  
         Task UpdateBlog(BlogData blogData);   
         void DeleteBlog(BlogData blogData);   

@@ -5,6 +5,13 @@
 @using Microsoft.AspNetCore.Authentication
 @{
     ViewData["Title"] = "Blog details";
+    <!--Count the total amount of comments in the post-->
+    var countSubComments = 0;
+    foreach(var com in Model.Comments)
+    {
+        countSubComments += com.SubComments.Count();
+    }
+    int overAllComments = Model.Comments.Count() + countSubComments;
 }
 
 <div class="hero hero-single route bg-image" style="background-image: url(/blog-details.jpg)">
@@ -76,7 +83,7 @@
                     </div>
                     <div class="box-comments">
                         <div class="title-box-2">
-                            <h4 class="title-comments title-left">Comments (@Model.Comments.Count())</h4>
+                            <h4 class="title-comments title-left">Comments (@overAllComments)</h4>
                         </div>
                         <ul class="list-comments" list="@Model.Comments" count="0">
                             @foreach (var comment in Model.Comments)
@@ -84,40 +91,31 @@
                                 <li>
 
                                     <div class="comment-details">
-                                       
-                                            <h4 class="comment-author">@comment.Author</h4>
-                                        
-                                        
+
+                                        <h4 class="comment-author">@comment.Author</h4>
+
+
                                         <span>@comment.DateCreated.ToLocalTime()</span>
                                         <p>
                                             @Html.DisplayFor(m => @comment.Body)
                                         </p>
-                                        <div>
-                                        @{
-                            await Html.RenderPartialAsync("_SubCommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = comment.Id });
-
-                                        }
-                                    </div>
                                         @if (!User.Identity.IsAuthenticated)
                                         {
-                                            //   <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to reply</a>
-                                        }
-                                        else
-                                        {
-                                            <a aria-expanded="false" href="@($"#replyComment{comment.Id}")"
-                                       data-toggle="collapse">Reply</a>
+                                            <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="~/BlogContent/data/@Model.BlogId" >Login to Reply</a>
+                                        }else{
+                                            <div class="dropdown">
+                                                <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Reply
+                                                </a>
+                                                 @{
+                                    await Html.RenderPartialAsync("_SubCommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = comment.Id });
 
+                                    }
+                                            </div>
                                         }
+                                        
                                     </div>
-                                    @if (User.Identity.IsAuthenticated)
-                                    {
-                                    <div class="collapse" id="@($"replyComment{comment.Id}")">
-                                        @{
-                            await Html.RenderPartialAsync("_SubCommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = comment.Id });
 
-                                        }
-                                    </div>
-                                      }
                                 </li>
                                 @foreach (var reply in comment.SubComments)
                                 {
@@ -142,17 +140,9 @@
                                 Leave a Comment
                             </h3>
                         </div>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            await Html.RenderPartialAsync("_CommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = 0 });
-
+                        @{
+                           await Html.RenderPartialAsync("_CommentPartial", new CommentViewModel { BlogId = Model.BlogId, MainCommentId = 0 });
                         }
-                        else
-                        {
-                            //  <a class="" asp-area="Identity" asp-page="~/Account/Login" asp-route-returnUrl="~/data/@Model.BlogId">Login to comment</a>
-                        }
-
-
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -204,12 +194,10 @@
                                 @foreach (var tags in Model.Tags)
                                 {
                                     <li>
-                                        <form method="get" asp-action="GetTag">
-                                            <input name="tag" value="@tags" hidden >
-                                            <input type="submit" asp-action="Index" value="@tags" id="tag">
+                                        <form method="get" asp-action="Index" asp-controller="Home" asp-area="">
+                                            <input name="tag" value="@tags" hidden>
+                                            <input type="submit" class="border-none text-light btn btn-warning-opacity-0" asp-action="Index" value="@tags" id="tag">
                                         </form>
-                                        <a asp-area="" asp-controller="Home" asp-action="Index" name="tag" id="tag">@Html.DisplayFor(m => tags)</a>
-                                       
                                     </li>
                                 }
 
@@ -232,19 +220,4 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    <script>
-        
-        $('[data-toggle="collapse"]').on('click', function() {
-            var $this = $(this),
-                $parent = typeof $this.data('parent') !== 'undefined' ? $($this.data('parent')) : undefined;
-            if ($parent === undefined) {/* Just toggle my*/
-                $this.find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
-                return true;
-            }
-            /*  Open element will be close if parent !== undefined */
-            var currentIcon = $this.find('.glyphicon');
-            currentIcon.toggleClass('glyphicon-plus glyphicon-minus');
-            $parent.find('.glyphicon').not(currentIcon).removeClass('glyphicon-minus').addClass('glyphicon-plus');
-        });
-    </script>
 }

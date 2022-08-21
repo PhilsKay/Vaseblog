@@ -20,12 +20,11 @@ namespace Blog.Controllers
 
         public async Task<IActionResult> Index(int? page, string title, string tag)
         {
-            tag = ViewBag.tag;
             //Check if the action is not from the search function
             if (title != null)
             {
                 var search = await _context.BlogData.Include(m => m.CategoryName)
-                    .Where(s => s.Title.Contains(title)).OrderByDescending(c => c.DateCreated).ToListAsync();
+                    .Where(s => s.Title.ToLower().Contains(title.ToLower())).OrderByDescending(c => c.DateCreated).ToListAsync();
                 ViewBag.Search = $"Search result for : {title}";
                 foreach (var data in search)
                 {
@@ -38,7 +37,8 @@ namespace Blog.Controllers
             if (tag != null)
             {
                 var search = await _context.BlogData.Include(m => m.CategoryName)
-                    .Where(s => s.Tags.Contains(tag)).OrderByDescending(c => c.DateCreated).ToListAsync();
+                    .Where(s => s.Tags.Contains(tag)
+                    ).OrderByDescending(c => c.DateCreated).ToListAsync();
                 ViewBag.Search = $"Search result for : {tag}";
                 foreach (var data in search)
                 {

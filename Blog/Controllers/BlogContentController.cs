@@ -6,6 +6,7 @@ using Blog.Repository.IServices;
 using Blog.ViewModels;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Blog.Controllers
 {
@@ -56,11 +57,12 @@ namespace Blog.Controllers
 
             return PartialView("_ArchiveBlogPartial", archive.ToPagedList(page ?? 1, 3));
         }
-        [HttpPost]  
+        [HttpPost]
+        [Authorize]
         public IActionResult AddComment(CommentViewModel comment)
         {
             if (!ModelState.IsValid)
-                return data(comment.BlogId);
+                return View("data",comment.BlogId);
             var result = blogservice.Comment(comment).Result;
                 return View("data",result);
         }

@@ -40,7 +40,7 @@ namespace Blog.Repository.ServicesData
             return category;
         }
 
-        public async void AddSubComment(SubComment subComment)
+        public async Task AddSubComment(SubComment subComment)
         {
             await _context.subComments.AddAsync(subComment);
             await _context.SaveChangesAsync();
@@ -71,7 +71,7 @@ namespace Blog.Repository.ServicesData
                     Author = httpContext.User.Identity.Name,
                     DateCreated = DateTime.UtcNow
                 };
-                AddSubComment(subComment);
+                await AddSubComment(subComment);
             }
             return blog;
         }
