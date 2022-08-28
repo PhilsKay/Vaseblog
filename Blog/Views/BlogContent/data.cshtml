@@ -5,6 +5,7 @@
 @using Microsoft.AspNetCore.Authentication
 @{
     ViewData["Title"] = "Blog details";
+    string url = $"https://localhost:44341/BlogContent/data/{@Model.BlogId}";
     <!--Count the total amount of comments in the post-->
     var countSubComments = 0;
     foreach (var com in Model.Comments)
@@ -80,6 +81,21 @@
                                 @Html.Raw(Model.Content)
                             </div>
                         </article>
+                        <div>
+                            <p class="lead">
+                                Share Article
+                            </p>
+                            <div class="d-flex align-items-center justify-content-start">
+                                <!--Facebook share -->
+                                <div class="fb-like" data-href="@url" data-width="" data-layout="button" data-action="like" data-size="small" data-share="true"></div>
+                                <!--Whatsapp share -->
+                                <div class="p-2">
+                                    <a href="https://api.whatsapp.com/send?text=@url" data-action="share/whatsapp/share"><i class="bi bi-lg bi-whatsapp w-100"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                     <div class="box-comments">
                         <div class="title-box-2">
@@ -197,22 +213,22 @@
                     -->
                     <div class="widget-sidebar widget-tags">
                         <h5 class="sidebar-title">Tags</h5>
-                        @if(Model.Tags != null)
+                        @if (Model.Tags.Count() > 0)
                         {
                             <div class="sidebar-content">
-                            <ul>
-                                @foreach (var tags in Model.Tags)
-                                {
-                                    <li>
-                                        <form method="get" asp-controller="Home" asp-action="Index" method="get" asp-area="">
-                                            <input name="tag" value="@tags" hidden>
-                                            <input type="submit" class="border-none text-light btn btn-warning-opacity-0" value="@tags" id="tag">
-                                        </form>
-                                    </li>
-                                }
+                                <ul>
+                                    @foreach (var tags in Model.Tags)
+                                    {
+                                        <li>
+                                            <form method="get" asp-controller="Home" asp-action="Index" method="get" asp-area="">
+                                                <input name="tag" value="@tags" hidden>
+                                                <input type="submit" class="border-none text-light btn btn-warning-opacity-0" value="@tags" id="tag">
+                                            </form>
+                                        </li>
+                                    }
 
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
                         }
                     </div>
                 </div>
