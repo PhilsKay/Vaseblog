@@ -43,21 +43,21 @@
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CategoryId)
-                               
+
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CategoryName)
                             </td>
                             <td>
                                 <a asp-route-Id="@item.CategoryId" class="btn btn-secondary"
-                                asp-action="Edit">
+                           asp-action="Edit">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                 <a asp-route-Id="@item.CategoryId" class="btn btn-danger"
-                                 onclick="confirm('Are you sure want to delete?')"
-                                 asp-action="Delete">
-                                     <i class="fa-solid fa-trash-can"></i>
-                                 </a>
+                                <a asp-route-Id="@item.CategoryId" class="btn btn-danger"
+                           onclick="confirm('Are you sure want to delete?')"
+                           asp-action="Delete">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
                             </td>
                         </tr>
                     }
@@ -65,13 +65,38 @@
                 else
                 {
                     <tr class="text-danger">
-                         No Category to show
+                        No Category to show
                     </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
+@section Scripts {
+    @if (TempData["AddCategory"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["Addcategory"]';
+            alertify.success(message);
+        </script>
+    }
 
+    @if (TempData["DeleteCategory"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["DeleteCategory"]';
+            alertify.error(message);
+        </script>
+    }
+
+    @if (TempData["EditCategory"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["EditCategory"]';
+            alertify.error(message);
+        </script>
+    }
+
+}
 
 

@@ -40,7 +40,7 @@ namespace Blog.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _ = categoryService.AddCategory(obj).Result;
-                TempData["AddCategory"] = "Category saved Successfully";
+                TempData["AddCategory"] = $"{obj.CategoryName} has been added to list Successfully";
                 return RedirectToAction("CategoryList");
             }
             ModelState.AddModelError(string.Empty, "Use correct format");
@@ -58,7 +58,7 @@ namespace Blog.Areas.Admin.Controllers
                 if (category != null)
                 {
                     categoryService.DeleteCategory(category);
-                    TempData["DeleteCategory"] = "Category deleted Successfully";
+                    TempData["DeleteCategory"] = $"{category.CategoryName}has been deleted from list Successfully";
                     return RedirectToAction("CategoryList");
                 }
                 TempData["DeleteCategory"] = "Category cannot be deleted";
@@ -94,7 +94,7 @@ namespace Blog.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                        _ = categoryService.UpdateCategory(obj).Result; 
-                        TempData["EditCategory"] = "Category edited successfully";
+                        TempData["EditCategory"] = $"Category edited successfully as {obj.CategoryName}";
                         return RedirectToAction("CategoryList");
                 }
                 ModelState.AddModelError(string.Empty, "Invalid format");
