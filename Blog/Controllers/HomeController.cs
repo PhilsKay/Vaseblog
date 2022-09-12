@@ -50,7 +50,7 @@ namespace Blog.Controllers
             var blogs = await _context.BlogData.Include(m => m.CategoryName).OrderByDescending(c => c.DateCreated).ToListAsync();
             foreach(var data in blogs)
             {
-                ViewBag.DateInAgoFormat = date(data.DateCreated.ToLocalTime().Ticks);//calling the date method and adding to the viewbag
+                ViewBag.DateInAgoFormat = date(data.DateCreated.Ticks);//calling the date method and adding to the viewbag
             }
 
             return View(blogs.ToPagedList(page??1,9));

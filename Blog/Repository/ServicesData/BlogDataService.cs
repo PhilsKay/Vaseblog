@@ -76,27 +76,6 @@ namespace Blog.Repository.ServicesData
             return blog;
         }
 
-        //public async Task<MainComment> AddComment(MainComment comment)
-        //{
-        //    await _context.MainComment.AddAsync(comment);
-        //    await _context.SaveChangesAsync();
-        //    return comment;
-        //}
-        //public async Task<ActionResult<MainComment>> CreateComment(BlogData post, MainComment comment, ClaimsPrincipal claimsPrincipal)
-        //{
-        //    if (post.BlogId == Guid.Empty)
-        //        return new BadRequestResult();
-        //    var blog = await GetBlogById(post.BlogId);
-        //    if (blog == null)
-        //        return new NotFoundResult();
-        //    var body = comment.Body;
-        //    comment.Author = await _userManager.GetUserAsync(claimsPrincipal);
-        //    comment.Blog = blog;
-        //    comment.DateCreated = DateTime.UtcNow;
-        //    if()
-
-        //    return comment;
-        //}
 
         public void DeleteBlog(BlogData blogData)
         {
@@ -112,7 +91,7 @@ namespace Blog.Repository.ServicesData
 
         public async Task<List<BlogData>> GetArchiveBlogs()
         {
-            var archive = await _context.BlogData.Include(m => m.CategoryName).OrderBy(c => c.DateCreated).ToListAsync();
+            var archive = await _context.BlogData.Include(m => m.CategoryName).OrderBy(c => c.DateCreated).Take(3).ToListAsync();
             return archive;
 
         }

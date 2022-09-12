@@ -72,14 +72,14 @@ namespace Blog.Controllers
             if(find != null)
             {
                 //find if the user is already present in the role specified
-                var userRoleExist = await userManager.IsInRoleAsync(find, "Administrator");
+                var userRoleExist = await userManager.IsInRoleAsync(find, "Admin");
                 if (!userRoleExist)
                 {
                     // If the user not present then add to role
-                    var result = await userManager.AddToRoleAsync(find, "Administrator");
+                    var result = await userManager.AddToRoleAsync(find, "Admin");
                     if (result.Succeeded)
                     {
-                        ViewData["roleUserCreate"] = "User added as Administrator";
+                        ViewData["roleUserCreate"] = "User added as Admin";
                         return View();
                     }
                     foreach (IdentityError error in result.Errors)

@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v6.0": {
       "Blog/1.0.0": {
         "dependencies": {
-          "ImageResizer": "4.2.8",
           "LazZiya.ImageResize": "4.1.0",
           "Microsoft.AspNetCore.Authentication.Google": "6.0.7",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.6",
@@ -27,14 +26,6 @@
           "lib/netstandard2.0/Humanizer.dll": {
             "assemblyVersion": "2.8.0.0",
             "fileVersion": "2.8.26.1919"
-          }
-        }
-      },
-      "ImageResizer/4.2.8": {
-        "runtime": {
-          "lib/net45/ImageResizer.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.2.8.1168"
           }
         }
       },
@@ -2274,13 +2265,6 @@
       "sha512": "sha512-OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
-    },
-    "ImageResizer/4.2.8": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3OZKxlsyYr9Zxsz0KwXJ5S749azmjcPV4B344ssR/3oneEY6ZdTawDPochD4Z4RHBs4bYBf592lVhmEngxtZ7g==",
-      "path": "imageresizer/4.2.8",
-      "hashPath": "imageresizer.4.2.8.nupkg.sha512"
     },
     "JetBrains.Annotations/2022.1.0": {
       "type": "package",

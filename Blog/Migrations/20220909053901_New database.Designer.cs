@@ -13,8 +13,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Blog.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220817065159_author update")]
-    partial class authorupdate
+    [Migration("20220909053901_New database")]
+    partial class Newdatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

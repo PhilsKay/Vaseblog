@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Web;
 using System.Drawing;
 using Microsoft.EntityFrameworkCore;
-using ImageResizer;
+using LazZiya.ImageResize;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Blog.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Admin")]
     public class BlogInfoController : Controller
     {
         private readonly IBlogservice blogservice;
@@ -48,44 +49,32 @@ namespace Blog.Areas.Admin.Controllers
                 obj.DateCreated = DateTime.UtcNow;
                 if (image != null)
                 {
-                    ImageResizer.ImageJob i = new ImageResizer.ImageJob(image.FileName,"~/uploads/<guid>.<ext>",new ImageResizer.Instructions
-                    {
-                        Width = 1366,
-                        Height = 728,
-                        Format = "png",
-                        Mode = FitMode.Max
-                    });
-                    i.CreateParentDirectory = true;
-                    i.Build();
 
                     //Getting the Image upload from server converuing to a url
                     var name = Path.Combine(_env.WebRootPath + "/images",Path.GetFileName(image.FileName));
-                   
-                    await image.CopyToAsync(new FileStream(name, FileMode.Create));
-                    obj.ImageUrl = "images/" + image.FileName;
-                    
+                     image.CopyTo(new FileStream(name, FileMode.Create));
+                    obj.ImageUrl = $"images/{image.FileName}";
 
+                    // Resize(image.FileName);
 
-                    //var settings = new ResizeSettings
-                    //{
-                    //    MaxWidth = 1366,
-                    //    MaxHeight = 728,
-                    //    Format = "png"
-                    //};
-                    //settings.Add("name", name.ToString());
-                    // ImageBuilder.Current.Build(hhhh, outStream, settings);
-                    //var resize = new ImageLayoutEngine()
-                    //var img = Image.FromFile("/wwwroot/images/Screenhot(11).png");
-                    //var scaleImage = ImageResize.Scale(img, 100, 100);
-                    //scaleImage.SaveAs("wwwroot\\images\\39c3dc6b-a61f-4ca0-a67f-97cd82e595de.jpg");
                 }
-                _ = blogservice.AddBlog(obj);
+                _ = await blogservice.AddBlog(obj);
+
                 TempData["AddBlog"] = "Blog saved Successfully";
                 return RedirectToAction("BlogList");
             }
             ModelState.AddModelError(string.Empty, "Use correct format");
             return View(obj);
         }
+
+        //private void Resize(string file)
+        //{
+        //    Guid fileName = Guid.NewGuid();
+        //    var img = System.Drawing.Image.FromFile(_env.WebRootPath+$"/images/{file}");
+        //    var scaleImage = ImageResize.Scale(img, 133, 72);
+        //    scaleImage.SaveAs($"wwwroot\\uploads\\{fileName}.jpg");
+        //   // return $"uploads/{fileName}.jpg";
+        //}
 
 
 

@@ -46,7 +46,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-            @if(User.Identity.IsAuthenticated && User.IsInRole("Administrator")){
+            @if(User.Identity.IsAuthenticated && User.IsInRole("Admin")){
                  <li><a class="nav-link scrollto " asp-area="Admin" asp-controller="Home" asp-action="Index">Dashboard</a></li>
             }
          

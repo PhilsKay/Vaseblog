@@ -38,7 +38,7 @@ namespace Blog.Controllers
                 var getCategoryName = categoryService.GetCategoryById(check.CategoryId).Result;
                 //show the contents of the category id in the viewbag and get the category name to display in the page
                 ViewBag.Category = getCategoryName.CategoryName;
-                ViewBag.DateInAgoFormat = date(check.DateCreated.ToLocalTime().Ticks);//calling the date method and adds to the viewbag
+                ViewBag.DateInAgoFormat = date(check.DateCreated.Ticks);//calling the date method and adds to the viewbag
                 return View(check);
             }
             return NotFound();
@@ -46,16 +46,16 @@ namespace Blog.Controllers
 
         public IActionResult LatestBlog(int? page)
         {
-            var latest = blogservice.GetBlogs().Result;
+            var latest = blogservice.GetBlogs().Result.Take(3).ToList();
 
-            return PartialView("_LatestBlogsPartial", latest.ToPagedList(page ?? 1, 5));
+            return PartialView("_LatestBlogsPartial", latest);
         }
 
-        public IActionResult ArchiveBlog(int? page)
+        public IActionResult ArchiveBlog()
         {
             var archive = blogservice.GetArchiveBlogs().Result;
 
-            return PartialView("_ArchiveBlogPartial", archive.ToPagedList(page ?? 1, 3));
+            return PartialView("_ArchiveBlogPartial", archive);
         }
         [HttpPost]
         [Authorize]

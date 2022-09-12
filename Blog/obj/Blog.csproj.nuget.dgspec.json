@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\openSource\\Vaseblog\\Blog\\Blog.csproj": {}
+    "D:\\philskay\\Vaseblog\\Blog\\Blog.csproj": {}
   },
   "projects": {
-    "C:\\openSource\\Vaseblog\\Blog\\Blog.csproj": {
+    "D:\\philskay\\Vaseblog\\Blog\\Blog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\openSource\\Vaseblog\\Blog\\Blog.csproj",
+        "projectUniqueName": "D:\\philskay\\Vaseblog\\Blog\\Blog.csproj",
         "projectName": "Blog",
-        "projectPath": "C:\\openSource\\Vaseblog\\Blog\\Blog.csproj",
-        "packagesPath": "C:\\Users\\danikay tech\\.nuget\\packages\\",
-        "outputPath": "C:\\openSource\\Vaseblog\\Blog\\obj\\",
+        "projectPath": "D:\\philskay\\Vaseblog\\Blog\\Blog.csproj",
+        "packagesPath": "C:\\Users\\TOBI-K\\.nuget\\packages\\",
+        "outputPath": "D:\\philskay\\Vaseblog\\Blog\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\danikay tech\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TOBI-K\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,10 +40,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "ImageResizer": {
-              "target": "Package",
-              "version": "[4.2.8, )"
-            },
             "LazZiya.ImageResize": {
               "target": "Package",
               "version": "[4.1.0, )"
@@ -85,7 +81,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -97,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -17,11 +17,11 @@
 <body>
      <div class="container">
         <fieldset>
-            <legend>Create Role</legend>
+            <legend>Add User to Admin</legend>
             <form asp-action="UserRole" method="post">
                 @if(ViewData["roleUserCreate"] as string != null)
                 {
-                <div class="text-success">@ViewData["roleCreate"]</div>
+                <div class="text-success">@ViewData["roleUserCreate"]</div>
                     
                 }
                  @if(ViewData["notExist"] as string != null)
