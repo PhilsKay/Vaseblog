@@ -207,7 +207,8 @@
     });
   }
 
-  
+
+
     //Add active to category filter btn
    // $('filter-item').click(function () {
      //   $(this.addClass())

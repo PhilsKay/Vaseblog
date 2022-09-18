@@ -26,10 +26,6 @@ namespace Blog.Controllers
                 var search = await _context.BlogData.Include(m => m.CategoryName)
                     .Where(s => s.Title.ToLower().Contains(title.ToLower())).OrderByDescending(c => c.DateCreated).ToListAsync();
                 ViewBag.Search = $"Search result for : {title}";
-                foreach (var data in search)
-                {
-                    ViewBag.DateInAgoFormat = date(data.DateCreated.ToLocalTime().Ticks);//calling the date method and adding to the viewbag
-                }
 
                 return View(search.ToPagedList(page ?? 1, 9));
             }
@@ -40,18 +36,9 @@ namespace Blog.Controllers
                     .Where(s => s.Tags.Contains(tag)
                     ).OrderByDescending(c => c.DateCreated).ToListAsync();
                 ViewBag.Search = $"Search result for : {tag}";
-                foreach (var data in search)
-                {
-                    ViewBag.DateInAgoFormat = date(data.DateCreated.ToLocalTime().Ticks);//calling the date method and adding to the viewbag
-                }
-
                 return View(search.ToPagedList(page ?? 1, 9));
             }
             var blogs = await _context.BlogData.Include(m => m.CategoryName).OrderByDescending(c => c.DateCreated).ToListAsync();
-            foreach(var data in blogs)
-            {
-                ViewBag.DateInAgoFormat = date(data.DateCreated.Ticks);//calling the date method and adding to the viewbag
-            }
 
             return View(blogs.ToPagedList(page??1,9));
         }
@@ -82,7 +69,7 @@ namespace Blog.Controllers
             const int DAY = 24 * HOUR;
             const int MONTH = 30 * DAY;
 
-            var ts = new TimeSpan(DateTime.UtcNow.Ticks - blogDate);
+            var ts = new TimeSpan(DateTime.UtcNow.ToLocalTime().Ticks - blogDate);
             double delta = Math.Abs(ts.TotalSeconds);
 
             if (delta < 1 * MINUTE)

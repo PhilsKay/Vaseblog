@@ -1042,3 +1042,4 @@ D:\philskay\Vaseblog\Blog\obj\Debug\net6.0\refint\Blog.dll
 D:\philskay\Vaseblog\Blog\obj\Debug\net6.0\Blog.pdb
 D:\philskay\Vaseblog\Blog\obj\Debug\net6.0\Blog.genruntimeconfig.cache
 D:\philskay\Vaseblog\Blog\obj\Debug\net6.0\ref\Blog.dll
+D:\philskay\Vaseblog\Blog\bin\Debug\net6.0\libman.json

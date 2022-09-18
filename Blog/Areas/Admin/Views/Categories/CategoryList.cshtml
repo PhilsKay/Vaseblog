@@ -53,11 +53,29 @@
                            asp-action="Edit">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a asp-route-Id="@item.CategoryId" class="btn btn-danger"
-                           onclick="confirm('Are you sure want to delete?')"
-                           asp-action="Delete">
+                                <a class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal">
                                     <i class="fa-solid fa-trash-can"></i>
                                 </a>
+
+                                <div class="modal fade" id="delete" aria-labelledby="deleteBlog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Delete Category</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container">
+                                                    <h2>Do you want to delete Categoty?</h2>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <a class="btn btn-danger" asp-route-Id="@item.CategoryId" asp-action="Delete">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     }
@@ -93,6 +111,13 @@
     {
         <script type="text/javascript">
             var message = '@TempData["EditCategory"]';
+            alertify.success(message);
+        </script>
+    }
+    @if (TempData["ErrorCategory"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["ErrorCategory"]';
             alertify.error(message);
         </script>
     }

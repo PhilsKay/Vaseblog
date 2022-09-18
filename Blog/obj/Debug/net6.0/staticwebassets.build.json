@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pARofLMsQ6tJsS8s1YfYPT1rOy1hPnTGL+bVCdvpBes=",
+  "Hash": "Zi7rcE/FiSC4QG4hdIz5QLsBQpAEQi4q7dhgSzQ7Nas=",
   "Source": "Blog",
   "BasePath": "_content/Blog",
   "Mode": "Default",
@@ -3587,12 +3587,12 @@
       "OriginalItemSpec": "wwwroot\\frolacss\\third_party\\spell_checker.min.css"
     },
     {
-      "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\images\\Screenshot (3).png",
+      "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\images\\Screenshot (1).png",
       "SourceId": "Blog",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\",
       "BasePath": "_content/Blog",
-      "RelativePath": "images/Screenshot (3).png",
+      "RelativePath": "images/Screenshot (1).png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -3601,7 +3601,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\Screenshot (3).png"
+      "OriginalItemSpec": "wwwroot\\images\\Screenshot (1).png"
     },
     {
       "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\js\\froala_editor.min.js",
@@ -6101,23 +6101,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
-    },
-    {
-      "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\uploads\\39c3dc6b-a61f-4ca0-a67f-97cd82e595de.jpg",
-      "SourceId": "Blog",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\",
-      "BasePath": "_content/Blog",
-      "RelativePath": "uploads/39c3dc6b-a61f-4ca0-a67f-97cd82e595de.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\39c3dc6b-a61f-4ca0-a67f-97cd82e595de.jpg"
     }
   ]
 }

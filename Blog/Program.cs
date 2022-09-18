@@ -66,6 +66,23 @@ builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 });
 
 
+// cors configuration
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        builder =>
+        {
+            builder.WithOrigins("https://localhost:44341/")
+                .AllowAnyHeader()
+                .WithMethods("GET", "POST")
+                .AllowCredentials();
+        });
+});
+
+builder.Services.AddControllers().AddJsonOptions(options =>
+options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -84,6 +101,10 @@ app.UseRouting();
 app.UseAuthentication(); 
 
 app.UseAuthorization();
+
+// UseCors must be called before MapHub.
+app.UseCors();
+
 
 app.UseEndpoints(endpoints =>
 {

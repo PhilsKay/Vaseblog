@@ -57,8 +57,16 @@ namespace Blog.Areas.Admin.Controllers
                 var category = categoryService.GetCategoryById(id).Result;
                 if (category != null)
                 {
-                    categoryService.DeleteCategory(category);
-                    TempData["DeleteCategory"] = $"{category.CategoryName}has been deleted from list Successfully";
+                    try
+                    {
+                        categoryService.DeleteCategory(category);
+                    }
+                    catch (Microsoft.EntityFrameworkCore.DbUpdateException ex)
+                    {
+                        TempData["ErrorCategory"] = $"{ex.Message}";
+                        return RedirectToAction("CategoryList");
+                    }
+                    TempData["DeleteCategory"] = $"{category.CategoryName} has been deleted from list Successfully";
                     return RedirectToAction("CategoryList");
                 }
                 TempData["DeleteCategory"] = "Category cannot be deleted";

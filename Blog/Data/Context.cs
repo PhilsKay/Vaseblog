@@ -13,6 +13,7 @@ namespace Blog.Data
         public DbSet<BlogData> BlogData { get; set; }
         public DbSet<MainComment> MainComment { get; set; }
         public DbSet<SubComment> subComments { get; set; }
+        public DbSet<PostLike> PostLike { get; set; }
 
 
 

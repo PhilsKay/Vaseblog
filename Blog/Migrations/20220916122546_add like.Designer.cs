@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Blog.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220916122546_add like")]
+    partial class addlike
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,6 +116,9 @@ namespace Blog.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("BlogDataBlogId")
+                        .HasColumnType("uuid");
+
                     b.Property<Guid>("BlogId")
                         .HasColumnType("uuid");
 
@@ -128,7 +133,7 @@ namespace Blog.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BlogId");
+                    b.HasIndex("BlogDataBlogId");
 
                     b.ToTable("PostLike");
                 });
@@ -376,13 +381,9 @@ namespace Blog.Migrations
 
             modelBuilder.Entity("Blog.Models.PostLike", b =>
                 {
-                    b.HasOne("Blog.Models.BlogData", "PostId")
+                    b.HasOne("Blog.Models.BlogData", null)
                         .WithMany("Likes")
-                        .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PostId");
+                        .HasForeignKey("BlogDataBlogId");
                 });
 
             modelBuilder.Entity("Blog.Models.SubComment", b =>

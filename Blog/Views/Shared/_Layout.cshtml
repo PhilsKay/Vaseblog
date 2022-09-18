@@ -1,4 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 @using Microsoft.AspNetCore.Authentication
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +28,10 @@
   <!-- Main CSS File -->
   <link href="~/assets/css/style.css" rel="stylesheet" asp-append-version="true">
 
+    <!--Alertify-->
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+
   <!-- =======================================================
   * Author: PhilsKay
   ======================================================== -->
@@ -40,19 +47,21 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a asp-action="Index" asp-controller="Home">Vase<span class="blog-logo">Blog</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <h1 class="logo fw-bold"><a asp-action="Index" asp-controller="Home">VaseBlog</a></h1>
 
       <nav id="navbar" class="navbar">
+          @if(SignInManager.IsSignedIn(User)){
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button id="logout" type="submit" class="nav-link btn btn-warning btn-sm mx-2 p-1">Logout</button>
+                    </form>
+          }
+
         <ul>
             @if(User.Identity.IsAuthenticated && User.IsInRole("Admin")){
                  <li><a class="nav-link scrollto " asp-area="Admin" asp-controller="Home" asp-action="Index">Dashboard</a></li>
             }
          
           <li><a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-          <li><a class="nav-link scrollto" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-          <li><a class="nav-link scrollto " asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
           <partial name="_LoginPartial" />  
         </ul>
 
@@ -73,10 +82,9 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="copyright-box">
-            <p class="copyright">&copy; 2022 <strong>PhilskayBlog</strong>. All Rights Reserved</p>
+            <p class="copyright">&copy; 2022 <strong>VaseBlog</strong>. All Rights Reserved</p>
             <div class="credits">
-             
-              Designed by <a href="">PhilsKay</a> & Powered by .Net 
+              Designed by <a href="#">PhilsKay</a> & Powered by .Net 
             </div>
           </div>
         </div>
@@ -97,6 +105,8 @@
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/jquery/dist/jquery.js"></script>
 
+    <!-- Alertify JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
   <!--  Main JS File -->
   <script src="~/assets/js/main.js"></script>

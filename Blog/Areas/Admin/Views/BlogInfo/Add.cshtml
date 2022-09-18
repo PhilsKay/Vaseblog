@@ -35,6 +35,7 @@
             <div class="form-group row col-lg-11 col-12 mb-3">
                 <div class="col-4">
                     <button onclick="addTags()" type="button">Add Tags</button>
+                    <br/>
                     <table id="AddTagsTable">
                         <tr>
                             <th>@Html.DisplayNameFor(model=>model.Tags)</th>
@@ -82,7 +83,7 @@
                     </label>
                 </div>
                 <div>
-                    <textarea asp-for="Summary" class="form-control" cols="200" rows="10">
+                    <textarea asp-for="Summary" class="form-control" cols="200" rows="5">
                     </textarea>
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>

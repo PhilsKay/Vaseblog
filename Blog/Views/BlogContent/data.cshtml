@@ -13,6 +13,9 @@
         countSubComments += com.SubComments.Count();
     }
     int overAllComments = Model.Comments.Count() + countSubComments;
+
+    int likes = Model.Likes.Where(l => l.UserLike == true).Count();
+    //int likesCount = liikes.Count();
 }
 
 <div class="hero hero-single route bg-image" style="background-image: url(/blog-details.jpg)">
@@ -52,11 +55,21 @@
                                 </li>
                                 <li>
                                     <span class="bi bi-tag"></span>
-                                    <a href="#">@ViewBag.Category</a>
+                                    @if(ViewData["Category"] as string != null ){
+                                        <a href="#">@ViewData["Category"]</a>
+                                    }
                                 </li>
                                 <li>
                                     <span class="bi bi-chat-left-text"></span>
-                                    <a href="#">@ViewBag.DateInAgoFormat</a>
+                                    @if (ViewData["dateInAgo"] as string != null)
+                                    {
+                                        <a href="#">@ViewData["dateInAgo"]</a>
+                                    }
+                                </li>
+                                <li id="like">
+                                    <a class="like-button" asp-route-Id="@Model.BlogId" asp-action="LikePost" title="Click to like this post!">
+                                       Likes<span class="bi bi-hand-thumbs-up"></span> <span class="like-count fw-bold">@likes</span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -222,7 +235,7 @@
                                         <li>
                                             <form method="get" asp-controller="Home" asp-action="Index" asp-area="">
                                                 <input name="tag" value="@tags" hidden>
-                                                <input type="submit" class="border-none text-light btn btn-warning-opacity-0" value="@tags" id="tag">
+                                                <input type="submit" class="border-none text-light btn btn-sm btn-warning-opacity-0" value="@tags" id="tag">
                                             </form>
                                         </li>
                                     }
@@ -243,8 +256,19 @@
         $('#latestBlogs').load("/BlogContent/LatestBlog")
         $('#archiveBlog').load("/BlogContent/ArchiveBlog")
 
+       
+
     </script>
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    @if (TempData["LikePost"] != null)
+    {
+        <script type="text/javascript">
+
+            var message = '@TempData["LikePost"]';
+            alertify.success(message);
+        </script>
+
     }
     }

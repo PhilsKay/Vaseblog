@@ -7,9 +7,17 @@ using Blog.ViewModels;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Blog.Models;
 
 namespace Blog.Controllers
 {
+    /// <summary>
+    /// delegate that points to all the date converter 
+    /// that shows when a blog is posted
+    /// </summary>
+    /// <param name="date"></param>
+    /// <returns> string</returns>
+    public delegate string DateCreatedDelegate(Int64 date);
     public class BlogContentController : Controller
     {
         private readonly ILogger<BlogContentController> _logger;
@@ -37,12 +45,15 @@ namespace Blog.Controllers
                 //Find the category Id of the blog since the category name is null in the check variable
                 var getCategoryName = categoryService.GetCategoryById(check.CategoryId).Result;
                 //show the contents of the category id in the viewbag and get the category name to display in the page
-                ViewBag.Category = getCategoryName.CategoryName;
-                ViewBag.DateInAgoFormat = date(check.DateCreated.Ticks);//calling the date method and adds to the viewbag
+                ViewData["Category"] = $"{getCategoryName.CategoryName}";
+                //cull the delegate variable
+                DateCreatedDelegate dateDelegate = date;
+                ViewData["dateInAgo"] = $"{dateDelegate(check.DateCreated.ToLocalTime().Ticks)}";//calling the date method and adds to the viewbag
                 return View(check);
             }
             return NotFound();
         }
+
 
         public IActionResult LatestBlog(int? page)
         {
@@ -64,7 +75,23 @@ namespace Blog.Controllers
             if (!ModelState.IsValid)
                 return View("data",comment.BlogId);
             var result = blogservice.Comment(comment).Result;
+            //stops the comment model from showing in the view
+            ViewData.ModelState.Clear();
                 return View("data",result);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> LikePost(Guid Id)
+        {
+            if(Id == Guid.Empty)
+            {
+                return NotFound();
+            }    
+             var blog = await blogservice.SaveLike(Id);
+            var user = new HttpContextAccessor().HttpContext;
+
+            TempData["LikePost"] = $"Thanks {user.User.Identity.Name},your review is well appreciated";
+            return View("data",blog);
         }
 
 
@@ -77,7 +104,7 @@ namespace Blog.Controllers
             const int DAY = 24 * HOUR;
             const int MONTH = 30 * DAY;
 
-            var ts = new TimeSpan(DateTime.UtcNow.Ticks - blogDate);
+            var ts = new TimeSpan(DateTime.UtcNow.ToLocalTime().Ticks - blogDate);
             double delta = Math.Abs(ts.TotalSeconds);
 
             if (delta < 1 * MINUTE)

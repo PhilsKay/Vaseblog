@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Blog.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220916122324_remove like")]
+    partial class removelike
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,31 +108,6 @@ namespace Blog.Migrations
                     b.HasIndex("BlogDataBlogId");
 
                     b.ToTable("MainComment");
-                });
-
-            modelBuilder.Entity("Blog.Models.PostLike", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("BlogId")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("DateLiked")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("User")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("UserLike")
-                        .HasColumnType("boolean");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BlogId");
-
-                    b.ToTable("PostLike");
                 });
 
             modelBuilder.Entity("Blog.Models.SubComment", b =>
@@ -374,17 +351,6 @@ namespace Blog.Migrations
                         .HasForeignKey("BlogDataBlogId");
                 });
 
-            modelBuilder.Entity("Blog.Models.PostLike", b =>
-                {
-                    b.HasOne("Blog.Models.BlogData", "PostId")
-                        .WithMany("Likes")
-                        .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PostId");
-                });
-
             modelBuilder.Entity("Blog.Models.SubComment", b =>
                 {
                     b.HasOne("Blog.Models.MainComment", null)
@@ -448,8 +414,6 @@ namespace Blog.Migrations
             modelBuilder.Entity("Blog.Models.BlogData", b =>
                 {
                     b.Navigation("Comments");
-
-                    b.Navigation("Likes");
                 });
 
             modelBuilder.Entity("Blog.Models.MainComment", b =>

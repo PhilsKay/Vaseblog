@@ -67,17 +67,6 @@ namespace Blog.Areas.Admin.Controllers
             return View(obj);
         }
 
-        //private void Resize(string file)
-        //{
-        //    Guid fileName = Guid.NewGuid();
-        //    var img = System.Drawing.Image.FromFile(_env.WebRootPath+$"/images/{file}");
-        //    var scaleImage = ImageResize.Scale(img, 133, 72);
-        //    scaleImage.SaveAs($"wwwroot\\uploads\\{fileName}.jpg");
-        //   // return $"uploads/{fileName}.jpg";
-        //}
-
-
-
         [ActionName("Delete")]
         public IActionResult Delete(Guid? id)
         {
@@ -86,7 +75,13 @@ namespace Blog.Areas.Admin.Controllers
                 var checkBlog = blogservice.GetBlogById(id).Result;
                 if (checkBlog != null)
                 {
+                    // first delete the image in the server
+                    Action<string> deleteImg = blogservice.DeleteImage;
+                    deleteImg(checkBlog.ImageUrl);
+
+                    // then delete the actual blog
                     blogservice.DeleteBlog(checkBlog);
+
                     TempData["DeleteBlog"] = "Blog deleted Successfully";
                     return RedirectToAction("BlogList");
                 }
@@ -135,7 +130,7 @@ namespace Blog.Areas.Admin.Controllers
             {
                 if (image != null)
                 {
-                    //Getting the Image upload from server converuing to a url
+                    //Getting the Image upload from server converting to a url
                     var name = Path.Combine(_env.WebRootPath + "/images", Path.GetFileName(image.FileName));
                     await image.CopyToAsync(new FileStream(name, FileMode.Create));
                     obj.ImageUrl = "images/" + image.FileName;
@@ -152,6 +147,7 @@ namespace Blog.Areas.Admin.Controllers
             ModelState.AddModelError(string.Empty, "Invalid format");
             return View("Edit",obj);
         }
+
     }
 
 }

@@ -108,11 +108,29 @@
                                 asp-action="Edit">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                 <a asp-route-Id="@item.BlogId" class="btn btn-danger"
-                                 onclick="confirm('Are you sure want to delete?')"
-                                 asp-action="Delete">
-                                     <i class="fa-solid fa-trash-can"></i>
-                                 </a>
+                                <a class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+
+                                <div class="modal fade" id="delete" aria-labelledby="deleteBlog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Delete Blog</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container">
+                                                    <h2>Do you want to delete blog?</h2>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <a class="btn btn-danger" asp-route-Id="@item.BlogId" asp-action="Delete">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     }
@@ -125,5 +143,32 @@
                 }
             </tbody>
         </table>
+   
     </div>
 </div>
+@section Scripts {
+    @if (TempData["AddBlog"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["AddBlog"]';
+            alertify.success(message);
+        </script>
+    }
+
+    @if (TempData["DeleteBlog"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["DeleteBlog"]';
+            alertify.error(message);
+        </script>
+    }
+
+    @if (TempData["EditBlog"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["EditBlog"]';
+            alertify.success(message);
+        </script>
+    }
+
+}

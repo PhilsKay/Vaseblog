@@ -41,6 +41,7 @@
              <div class="form-group row">
                 <div class="col-4">
                  <button onclick="addTags()" type="button">Add Tags</button>
+                 <br />
                     <table id="AddTagsTable">
                         <tr>
                             <th>@Html.DisplayNameFor(model=>model.Tags)</th>
@@ -72,21 +73,11 @@
                     <label class="control-label">
                         Image
                         <br />
-                        <p>Note: Change image if your require.</p>
+                        <p class="text-danger">Note: Change image if your require.</p>
                     </label>
                 </div>
-                <input type="file" name="image" />
+                <input type="file" name="image" class="form-control" />
 
-                <!-- <div class="custom-file">
-                 <input asp-for="ImageUrl" type="image" class="file"
-                 id="blogImage"
-                 onchange="document.getElementById('blogImage').src = window.URL.createObjectURL(this.files[0])"/>
-                 <label class="cusstom-file-label" for="imageUrl">Choose Image</label>
-                 </div>
-                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
-
-                 <img id="blogImage" src="" alt="Blog image" width="150" height="150"
-                     style="border: 1px; margin-top: 20px; margin-left: 120px"/>-->
             </div>
 
             <div class="form-group">
@@ -115,7 +106,7 @@
                     </label>
                 </div>
                 <div>
-                    <textarea asp-for="Summary" class="form-control" cols="200" rows="50">
+                    <textarea asp-for="Summary" class="form-control" cols="200" rows="5">
                     </textarea>
                     <span asp-validation-for="Summary" class="text-danger"></span>
                 </div>
@@ -134,13 +125,7 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    <!--  <script type="text/javascript">
-    $(".file").on("change", function() {
-    var fileName = $(this).val().split("\\").pop();
-    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-    });
-    </script>
-    -->
+   <!--Script responsible for adding the tags-->
     <script>
        
         var counter = 0;
