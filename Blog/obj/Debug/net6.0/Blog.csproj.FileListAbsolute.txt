@@ -780,7 +780,6 @@ C:\openSource\Vaseblog\Blog\bin\Debug\net6.0\LazZiya.ImageResize.dll
 C:\openSource\Vaseblog\Blog\bin\Debug\net6.0\ImageResizer.dll
 C:\openSource\Vaseblog\Blog\bin\Debug\net6.0\web.config
 D:\philskay\Vaseblog\Blog\bin\Debug\net6.0\appsettings.Development.json
-D:\philskay\Vaseblog\Blog\bin\Debug\net6.0\web.config
 D:\philskay\Vaseblog\Blog\bin\Debug\net6.0\appsettings.json
 D:\philskay\Vaseblog\Blog\bin\Debug\net6.0\bundleconfig.json
 D:\philskay\Vaseblog\Blog\bin\Debug\net6.0\Blog.staticwebassets.runtime.json

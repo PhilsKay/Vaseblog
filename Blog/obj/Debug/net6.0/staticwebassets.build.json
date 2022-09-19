@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Zi7rcE/FiSC4QG4hdIz5QLsBQpAEQi4q7dhgSzQ7Nas=",
+  "Hash": "dxRFuaVhL+YzbYlTLuKhXwVrMrLEVgUdnZgic7LdpEQ=",
   "Source": "Blog",
   "BasePath": "_content/Blog",
   "Mode": "Default",
@@ -3587,6 +3587,40 @@
       "OriginalItemSpec": "wwwroot\\frolacss\\third_party\\spell_checker.min.css"
     },
     {
+      "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\images\\Home Page Internhub - Google Chrome 9_12_2022 10_47_42 PM.png",
+      "SourceId": "Blog",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\",
+      "BasePath": "_content/Blog",
+      "RelativePath": "images/Home Page Internhub - Google Chrome 9_12_2022 10_47_42 PM.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Home Page Internhub - Google Chrome 9_12_2022 10_47_42 PM.png"
+    },
+    {
+      "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\images\\Sahitya.jpeg",
+      "SourceId": "Blog",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\",
+      "BasePath": "_content/Blog",
+      "RelativePath": "images/Sahitya.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\Sahitya.jpeg"
+    },
+    {
       "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\images\\Screenshot (1).png",
       "SourceId": "Blog",
       "SourceType": "Discovered",
@@ -3602,6 +3636,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\Screenshot (1).png"
+    },
+    {
+      "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\images\\team_3.jpg",
+      "SourceId": "Blog",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\",
+      "BasePath": "_content/Blog",
+      "RelativePath": "images/team_3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\team_3.jpg"
     },
     {
       "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\js\\froala_editor.min.js",
