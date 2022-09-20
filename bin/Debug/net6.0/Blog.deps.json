@@ -9,6 +9,7 @@
       "Blog/1.0.0": {
         "dependencies": {
           "LazZiya.ImageResize": "4.1.0",
+          "MessagePackAnalyzer": "2.1.152",
           "Microsoft.AspNetCore.Authentication.Google": "6.0.7",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.6",
           "Microsoft.AspNetCore.Identity.UI": "6.0.8",
