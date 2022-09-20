@@ -1,0 +1,23 @@
+{
+  "name": "vaseblog",
+  "version": "1.0.0",
+  "description": "A Blog web app with an high performance framework. \r ## Technologies I used",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhilsKay/Vaseblog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PhilsKay/Vaseblog/issues"
+  },
+  "homepage": "https://github.com/PhilsKay/Vaseblog#readme",
+  "dependencies": {
+    "@microsoft/signalr": "^6.0.9"
+  }
+}
