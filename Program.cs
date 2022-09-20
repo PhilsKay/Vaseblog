@@ -61,8 +61,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 // Login with google Auth
 builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 {
-    googleOptions.ClientId = builder.Configuration["Google:ClientId"];
-    googleOptions.ClientSecret = builder.Configuration["Google:UserSecret"];
+    googleOptions.ClientId = "575075886198-9vrmi9ij2q1dk2k4o8dakit2q4nhovqo.apps.googleusercontent.com";
+    googleOptions.ClientSecret = "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";
 });
 
 
