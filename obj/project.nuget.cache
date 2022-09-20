@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HMoVCsk3O2ltsnNIcZ9MgY3ZQ6qYJP2rLTFTuwHZsUNSWyXWgnqTQaxKJFgdO8VxUN9KULMQWTzOPuoKmdU1AQ==",
+  "dgSpecHash": "Fe6MjP1GuevOP8aJxNqMUrgLFexbDFIxRPvqFhnpsoXcBm0EpvRP3i3qaSZmx0MywubObK6aRRcTaDk11imhow==",
   "success": true,
   "projectFilePath": "D:\\philskay\\Vaseblog\\Blog.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,7 @@
     "C:\\Users\\TOBI-K\\.nuget\\packages\\lazziya.imageresize\\4.1.0\\lazziya.imageresize.4.1.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
-    "C:\\Users\\TOBI-K\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
+    "C:\\Users\\TOBI-K\\.nuget\\packages\\messagepackanalyzer\\2.4.35\\messagepackanalyzer.2.4.35.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\6.0.7\\microsoft.aspnetcore.authentication.google.6.0.7.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.8\\microsoft.aspnetcore.cryptography.internal.6.0.8.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.8\\microsoft.aspnetcore.cryptography.keyderivation.6.0.8.nupkg.sha512",

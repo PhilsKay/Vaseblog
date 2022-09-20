@@ -45,8 +45,10 @@
               "version": "[4.1.0, )"
             },
             "MessagePackAnalyzer": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[2.1.152, )"
+              "version": "[2.4.35, )"
             },
             "Microsoft.AspNetCore.Authentication.Google": {
               "target": "Package",
