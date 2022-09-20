@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dxRFuaVhL+YzbYlTLuKhXwVrMrLEVgUdnZgic7LdpEQ=",
+  "Hash": "dnyM6eBi2HqRvZT3B/62LaIUAS3oTDQW3KImJT0jYeE=",
   "Source": "Blog",
   "BasePath": "_content/Blog",
   "Mode": "Default",
@@ -3585,6 +3585,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\frolacss\\third_party\\spell_checker.min.css"
+    },
+    {
+      "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\images\\7309681.jpg",
+      "SourceId": "Blog",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\",
+      "BasePath": "_content/Blog",
+      "RelativePath": "images/7309681.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\7309681.jpg"
     },
     {
       "Identity": "D:\\philskay\\Vaseblog\\Blog\\wwwroot\\images\\Home Page Internhub - Google Chrome 9_12_2022 10_47_42 PM.png",
