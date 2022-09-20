@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uknvhu5KPEoJUs3b9EXJM3mryDSPaIM0zGaPzUcDN5ZQul1w44CxDPn5cGBd7kHlOuY+9P19Ss9pT4CHFuGO4Q==",
+  "dgSpecHash": "HMoVCsk3O2ltsnNIcZ9MgY3ZQ6qYJP2rLTFTuwHZsUNSWyXWgnqTQaxKJFgdO8VxUN9KULMQWTzOPuoKmdU1AQ==",
   "success": true,
   "projectFilePath": "D:\\philskay\\Vaseblog\\Blog.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.net.stringtools\\1.0.0\\microsoft.net.stringtools.1.0.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
+    "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.17.0\\microsoft.visualstudio.azure.containers.tools.targets.1.17.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.visualstudio.debugger.contracts\\17.2.0\\microsoft.visualstudio.debugger.contracts.17.2.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\6.0.7\\microsoft.visualstudio.web.codegeneration.6.0.7.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\6.0.7\\microsoft.visualstudio.web.codegeneration.core.6.0.7.nupkg.sha512",
