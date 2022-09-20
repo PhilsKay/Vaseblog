@@ -59,11 +59,11 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 // Login with google Auth
-builder.Services.AddAuthentication().AddGoogle(googleOptions =>
-{
-    googleOptions.ClientId = builder.Configuration["Google:ClientId"];
-    googleOptions.ClientSecret = builder.Configuration["Google:UserSecret"];
-});
+//builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+//{
+//    googleOptions.ClientId = builder.Configuration["Google:ClientId"];
+//    googleOptions.ClientSecret = builder.Configuration["Google:UserSecret"];
+//});
 
 
 // cors configuration
