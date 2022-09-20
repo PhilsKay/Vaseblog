@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fdb4HBZ6BVb3d4Ww544Xyp4r7cnRfhKa6Y2kU9JO+VvUY83aZuA1HEElzjpqop1xjNUGZ/RUFkQE6LsSh/hinA==",
+  "dgSpecHash": "uknvhu5KPEoJUs3b9EXJM3mryDSPaIM0zGaPzUcDN5ZQul1w44CxDPn5cGBd7kHlOuY+9P19Ss9pT4CHFuGO4Q==",
   "success": true,
   "projectFilePath": "D:\\philskay\\Vaseblog\\Blog.csproj",
   "expectedPackageFiles": [
@@ -35,7 +35,6 @@
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.codeanalysis.visualbasic.workspaces\\4.0.0\\microsoft.codeanalysis.visualbasic.workspaces.4.0.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\4.0.0\\microsoft.codeanalysis.workspaces.common.4.0.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.codeanalysis.workspaces.msbuild\\4.0.0\\microsoft.codeanalysis.workspaces.msbuild.4.0.0.nupkg.sha512",
-    "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.codecoverage\\17.3.1\\microsoft.codecoverage.17.3.1.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.csharp\\4.3.0\\microsoft.csharp.4.3.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.diasymreader\\1.3.0\\microsoft.diasymreader.1.3.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.dotnet.scaffolding.shared\\6.0.7\\microsoft.dotnet.scaffolding.shared.6.0.7.nupkg.sha512",
@@ -59,11 +58,8 @@
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.net.stringtools\\1.0.0\\microsoft.net.stringtools.1.0.0.nupkg.sha512",
-    "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.net.test.sdk\\17.3.1\\microsoft.net.test.sdk.17.3.1.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
-    "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.netcore.targets\\5.0.0\\microsoft.netcore.targets.5.0.0.nupkg.sha512",
-    "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.3.1\\microsoft.testplatform.objectmodel.17.3.1.nupkg.sha512",
-    "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.testplatform.testhost\\17.3.1\\microsoft.testplatform.testhost.17.3.1.nupkg.sha512",
+    "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.visualstudio.debugger.contracts\\17.2.0\\microsoft.visualstudio.debugger.contracts.17.2.0.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\6.0.7\\microsoft.visualstudio.web.codegeneration.6.0.7.nupkg.sha512",
     "C:\\Users\\TOBI-K\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.core\\6.0.7\\microsoft.visualstudio.web.codegeneration.core.6.0.7.nupkg.sha512",

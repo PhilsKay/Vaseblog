@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[4.1.0, )"
             },
+            "MessagePackAnalyzer": {
+              "target": "Package",
+              "version": "[2.1.152, )"
+            },
             "Microsoft.AspNetCore.Authentication.Google": {
               "target": "Package",
               "version": "[6.0.7, )"
@@ -61,14 +65,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.6, )"
-            },
-            "Microsoft.NET.Test.Sdk": {
-              "target": "Package",
-              "version": "[17.3.1, )"
-            },
-            "Microsoft.NETCore.Targets": {
-              "target": "Package",
-              "version": "[5.0.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
