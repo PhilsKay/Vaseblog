@@ -15,9 +15,9 @@
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
 
-  <!--Alertify-->
-  <!-- Bootstrap theme -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!--Alertify-->
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
 
 </head>
 <body class="sb-nav-fixed">
@@ -43,11 +43,11 @@
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <li>
-        <form id="logoutForm" class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button id="logout" type="submit">Logout</button>
-        </form>
-    </li>
-}
+                            <form id="logoutForm" class="dropdown-item" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                <button id="logout" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    }
                 </ul>
             </li>
         </ul>
@@ -63,38 +63,33 @@
                             Dashboard
                         </a>
                         <div class="sb-sidenav-menu-heading">Blog & Category</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Blog & Category
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+
+                        <a class="nav-link" asp-area="Admin" asp-controller="Categories" asp-action="CategoryList" >
+                            <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                            Category Details
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" asp-area="Admin" asp-controller="Categories" asp-action="CategoryList" >Category Details</a>
-                                <a class="nav-link" asp-area="Admin" asp-controller="Categories" asp-action="Add">Add Category</a>
-                                <a class="nav-link" asp-area="Admin" asp-controller="BlogInfo" asp-action="BlogList">Blog Details</a>
-                                <a class="nav-link" asp-area="Admin" asp-controller="BlogInfo" asp-action="Add">Add Blog</a>
-                            </nav>
-                        </div>
-                          
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" asp-area="Admin" asp-controller="Categories" asp-action="Add">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
+                            Add Category
+                        </a>
+                        <a class="nav-link" asp-area="Admin" asp-controller="BlogInfo" asp-action="BlogList">
+                            <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                             Blog Details
+                        </a>
+                        <a class="nav-link" asp-area="Admin" asp-controller="BlogInfo" asp-action="Add">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Add Blog
                         </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    @if (SignInManager.IsSignedIn(User)){
-                        <div class="small">Logged in as:</div>
-                        <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@UserManager.GetUserName(User)!</a>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                            <div class="small">Logged in as:</div>
+                            <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@UserManager.GetUserName(User)!</a>
 
                     }
-                    
+
                 </div>
             </nav>
         </div>
@@ -105,9 +100,9 @@
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
+                    <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">&copy; 2022 <strong>VaseBlog</strong>. All Rights Reserved</div>
+                       <div class="text-muted">&copy; 2022 <strong>VaseBlog</strong>. All Rights Reserved</div>
                         <div>
                             Designed by <a href="#">PhilsKay</a> & Powered by .Net
                         </div>
@@ -119,15 +114,12 @@
 
 }
 
- 
+
     <!-- Alertify JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="~/admin/js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="~/admin/assets/demo/chart-area-demo.js"></script>
-    <script src="~/admin/assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="~/admin/js/datatables-simple-demo.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
