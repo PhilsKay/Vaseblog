@@ -1,0 +1,174 @@
+﻿@using Blog.Models
+@model List<BlogData>
+
+@{
+    ViewData["Title"] = "Blog List";
+}
+
+<h1 class="mt-4">Blog Details</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Blog Details</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Blogs
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>
+                        Blog Id
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                     <th>
+                        Tags
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                     <th>
+                        Date time
+                    </th>
+                    <th>
+                        Content
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                     <th>
+                        Blog Id
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                     <th>
+                        Tags
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                     <th>
+                        Date time
+                    </th>
+                    <th>
+                        Summary
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BlogId)
+                               
+                            </td>
+                            <td>
+                                <img src="~/@item.ImageUrl" height="100" width="100">
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                               
+                            </td>
+                            <td>
+                                @foreach(var tgs in item.Tags){
+                                @Html.DisplayFor(modelItem => tgs)
+                                <span>, </span>
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryName.CategoryName)
+                               
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Summary)
+                                
+                            </td>
+
+                            <td>
+                                <a asp-route-Id="@item.BlogId" class="btn btn-secondary"
+                                asp-action="Edit">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a class="btn btn-danger" data-bs-target="#delete" data-bs-toggle="modal">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </a>
+
+                                <div class="modal fade" id="delete" aria-labelledby="deleteBlog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Delete Blog</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container">
+                                                    <h2>Do you want to delete blog?</h2>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <a class="btn btn-danger" asp-route-Id="@item.BlogId" asp-action="Delete">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="text-danger">
+                         No Blog to show
+                    </tr>
+                }
+            </tbody>
+        </table>
+   
+    </div>
+</div>
+@section Scripts {
+    @if (TempData["AddBlog"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["AddBlog"]';
+            alertify.success(message);
+        </script>
+    }
+
+    @if (TempData["DeleteBlog"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["DeleteBlog"]';
+            alertify.error(message);
+        </script>
+    }
+
+    @if (TempData["EditBlog"] != null)
+    {
+        <script type="text/javascript">
+            var message = '@TempData["EditBlog"]';
+            alertify.success(message);
+        </script>
+    }
+
+}
