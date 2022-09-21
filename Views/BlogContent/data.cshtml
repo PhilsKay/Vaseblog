@@ -5,7 +5,7 @@
 @using Microsoft.AspNetCore.Authentication
 @{
     ViewData["Title"] = "Blog details";
-    string url = $"https://localhost:44341/BlogContent/data/{@Model.BlogId}";
+    string url = $"https://vaseblog.herokuapp.com/BlogContent/data/{@Model.BlogId}";
     <!--Count the total amount of comments in the post-->
     var countSubComments = 0;
     foreach (var com in Model.Comments)
