@@ -62,7 +62,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = "620194097834-epdv6ej4hhs8k5m3meb0bi610ngvliaq.apps.googleusercontent.com";
-    googleOptions.ClientSecret = "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";
+    googleOptions.ClientSecret = "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c";
 });
 
 
