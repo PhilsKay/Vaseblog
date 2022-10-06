@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QtboO/pQ75JyORL41H1aAzYOAoGGNqF1vmsdD3eG/TE=",
+  "Hash": "4pVEdmjcpPNlONlFiUzK+TpcZSsTIz7daPAP8wXSI44=",
   "Source": "Blog",
   "BasePath": "_content/Blog",
   "Mode": "Default",
@@ -1224,23 +1224,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\css\\style.css"
     },
     {
-      "Identity": "D:\\philskay\\Vaseblog\\wwwroot\\assets\\img\\apple-touch-icon.png",
-      "SourceId": "Blog",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\philskay\\Vaseblog\\wwwroot\\",
-      "BasePath": "_content/Blog",
-      "RelativePath": "assets/img/apple-touch-icon.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\apple-touch-icon.png"
-    },
-    {
       "Identity": "D:\\philskay\\Vaseblog\\wwwroot\\assets\\img\\banner.jpg",
       "SourceId": "Blog",
       "SourceType": "Discovered",
@@ -1275,23 +1258,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\counters-bg.jpg"
     },
     {
-      "Identity": "D:\\philskay\\Vaseblog\\wwwroot\\assets\\img\\favicon.png",
-      "SourceId": "Blog",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\philskay\\Vaseblog\\wwwroot\\",
-      "BasePath": "_content/Blog",
-      "RelativePath": "assets/img/favicon.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\favicon.png"
-    },
-    {
       "Identity": "D:\\philskay\\Vaseblog\\wwwroot\\assets\\img\\home-banner.jpg",
       "SourceId": "Blog",
       "SourceType": "Discovered",
@@ -1307,6 +1273,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\home-banner.jpg"
+    },
+    {
+      "Identity": "D:\\philskay\\Vaseblog\\wwwroot\\assets\\img\\icons8-v-67.png",
+      "SourceId": "Blog",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\philskay\\Vaseblog\\wwwroot\\",
+      "BasePath": "_content/Blog",
+      "RelativePath": "assets/img/icons8-v-67.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\icons8-v-67.png"
     },
     {
       "Identity": "D:\\philskay\\Vaseblog\\wwwroot\\assets\\img\\overlay-bg.jpg",

@@ -15,14 +15,8 @@
   <!-- Favicons -->
   <link href="~/assets/img/favicon.png" rel="icon">
   <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
-  <!-- Vendor CSS Files -->
-  <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true">
-  <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" asp-append-version="true">
-  
-
-  <!-- Main CSS File -->
-  <link href="~/assets/css/style.css" rel="stylesheet" asp-append-version="true">
 
   <!-- =======================================================
   * Author: PhilsKay
@@ -40,18 +34,18 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg bg-dark py-3 navbar-dark fixed-top">
         <div class="container">
-            <h1 class="logo fw-bold"><a asp-action="Index" asp-controller="Home" asp-area="">VaseBlog</a></h1>
+            <h1 class="logo fw-bold"><a asp-action="Index" asp-controller="Home" asp-area="" class="text-decoration-none text-light">VaseBlog</a></h1>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="nav-menu">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
-                    <li class="mx-2">
-                        <a class="nav-link scrollto btn btn-primary p-1" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                    <li class="mx-2 nav-item">
+                        <a class="nav-link text-primary p-1" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
                     </li>
-                    <li class="mx-2">
-                        <a class="nav-link scrollto btn btn-success p-1" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                    <li class="mx-2 nav-item">
+                        <a class="nav-link text-success p-1" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
                     </li>
 
                 </ul>
@@ -61,20 +55,17 @@
 
     <div class="container">
         <div class="p-5">
-            @RenderBody()
+                @RenderBody()
 
         </div>
     </div>
 
   <!-- Vendor JS Files -->
-  <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="~/assets/vendor/typed.js/typed.min.js"></script>
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
-  <script src="~/lib/jquery/dist/jquery.js"></script>
-
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 
   <!--  Main JS File -->
-  <script src="~/assets/js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
