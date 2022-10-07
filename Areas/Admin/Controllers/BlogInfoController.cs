@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Web;
 using System.Drawing;
 using Microsoft.EntityFrameworkCore;
-using LazZiya.ImageResize;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Blog.Areas.Admin.Controllers

@@ -59,7 +59,7 @@ namespace Blog.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("BlogData");
+                    b.ToTable("BlogData", (string)null);
                 });
 
             modelBuilder.Entity("Blog.Models.Category", b =>
@@ -78,7 +78,7 @@ namespace Blog.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Category");
+                    b.ToTable("Category", (string)null);
                 });
 
             modelBuilder.Entity("Blog.Models.MainComment", b =>
@@ -105,7 +105,7 @@ namespace Blog.Migrations
 
                     b.HasIndex("BlogDataBlogId");
 
-                    b.ToTable("MainComment");
+                    b.ToTable("MainComment", (string)null);
                 });
 
             modelBuilder.Entity("Blog.Models.PostLike", b =>
@@ -130,7 +130,7 @@ namespace Blog.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("PostLike");
+                    b.ToTable("PostLike", (string)null);
                 });
 
             modelBuilder.Entity("Blog.Models.SubComment", b =>
@@ -157,7 +157,7 @@ namespace Blog.Migrations
 
                     b.HasIndex("MainCommentId");
 
-                    b.ToTable("subComments");
+                    b.ToTable("subComments", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
